@@ -1,0 +1,165 @@
+body{
+    color: #0074E4 !important;
+}
+#body{
+    background-image: url("{{ asset('img/third.jpg')}}");
+}
+.wrapper{
+    background-color: whitesmoke !important;
+    font-family: PT Serif !important;
+    color: #0074E4 !important;
+}
+#login{
+    font-family: Garamond !important;
+    width: 400px !important;
+    margin-top: 100px;
+    height: 300px;
+}
+
+.btn{
+    width: 100px !important;
+}
+
+#register{
+    font-family: Garamond !important;
+    width: 600px !important;
+    height: auto !important;
+    margin-top: 100px;
+}
+#register div{
+    width: 100% !important;
+    margin-top: 5px;
+}
+
+#admin-register{
+    font-family: Garamond !important;
+    width: 600px !important;
+    height: auto !important;
+    margin-top: 100px;
+}
+#admin-register div{
+    width: 100% !important;
+    margin-top: 5px;
+}
+
+.nav-link{
+    font-size: 16px !important;
+    color:  #0074E4;
+}
+
+.nav-link:hover{
+    font-size: 18px !important;
+}
+.nav link:active{
+    text-decoration: underline !important;
+}
+#them_btn{
+    display: inline !important;
+}
+
+th,td{
+    width: auto !important;
+}
+
+#child_index{
+    width: 900px !important;
+}
+#mother_index{
+    width: 900px;
+}
+
+#number{
+    width: 32px !important;
+}
+
+#info{
+    width: 500px !important;
+    font-size: 12px !important;
+}
+.container{
+    height: auto !important;
+}
+#btn{
+    width: 150px !important;
+    margin-top: 10px;
+    margin-bottom: 100px;
+}
+#treatment{
+    margin-top: 100px;
+    width: 700px;
+    height: 600px;
+}
+
+#consultation{
+    margin-top: 10px !important;
+    width: 500px !important;
+}
+#mySidenav{
+    display: inline-block;
+}
+#mySidenav a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: right;
+    position: fixed;
+    right: -130px;
+    transition: 0.3s;
+    padding: 15px;
+    width: 170px;
+    text-decoration: none;
+    font-size: 14px;
+    color: white;
+    border-radius: 5px 0px 0px 5px;
+}
+
+#mySidenav i {
+    margin-right: 10px;
+}
+
+#mySidenav a:hover {
+    right: 0;
+}
+
+#mySidenav a.active {
+    background-color: #04AA6D;
+}
+
+#a {
+    top: 60px;
+    background-color: #2196F3;
+}
+
+#b {
+    top: 120px;
+    background-color: #2196F3;
+}
+
+#c {
+    top: 180px;
+    background-color: #2196F3;
+}
+
+#d {
+    top: 260px;
+    background-color: #2196F3;
+}
+
+#e {
+    top: 340px;
+    background-color: #2196F3;
+}
+
+#f {
+    top: 400px;
+    background-color: #2196F3;
+}
+
+#g {
+    top: 460px;
+    background-color: #2196F3;
+}
+textarea{
+    width: 650px !important;
+    height: 300px !important;
+}
