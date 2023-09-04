@@ -60,6 +60,7 @@ Route::controller(MothersController::class)->group(function (){
     Route::get('/maternal/mothers/medication','medication_index')->name('patient.medication.index');
     Route::get('/maternal/mothers/progress','progress_index')->name('patient.progress.index');
     Route::get('/maternal/mothers/children','children_index')->name('patient.children.index');
+    Route::get('/maternal/mothers/consultation/treatment/{id}','see_treatments')->name('patient.see.treatment');
 });
 
 Route::controller(ChildsController::class)->group(function (){

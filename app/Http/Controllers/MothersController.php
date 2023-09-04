@@ -149,12 +149,17 @@ class MothersController extends Controller
             ->where('date', '<', $week)
             ->orderBy('starting_time','desc')
             ->get();
-            dd($treatments->consultations_id == $recentconsultations->id);
         return view('Maternal.Patient-user.consultation.index',
         compact('mothers'
         , 'recentconsultations'
         , 'pastconsultations'
         ,'treatments'));
+    }
+
+    public function see_treatments($id){
+        $treatments = Treatments::where('consultations_id', $id )->first();
+
+        return view('Maternal.Patient-user.consultation.show', compact('treatments'));
     }
 
     public function medication_index()

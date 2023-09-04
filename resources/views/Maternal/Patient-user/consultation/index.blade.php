@@ -17,11 +17,16 @@
                             <td>{{ $consultation->date }}</td>
                             <td>{{ $consultation->starting_time }}</td>
                             <td>{{ $consultation->ending_time }}</td>
-                            @if ( $treatments->consultations_id == $consultation->id )
-                            <td><a class="nav-link" href="#">See treatment</a></td>
-                            @else
-                            <td>No treatment</td>
-                            @endif
+                            @php
+                                $matching = $treatments->where('consultations_id', $consultation->id)->first();
+                            @endphp
+                            <td>
+                                @if ($matching)
+                                <a href="{{ route('patient.see.treatment', $consultation->id)}}">See treatment</a>
+                                @else
+                                No treatment
+                                @endif
+                            </td>
                         </tr>
                     @empty
                         <tr>
@@ -45,11 +50,16 @@
                             <td>{{ $consultation->date }}</td>
                             <td>{{ $consultation->starting_time }}</td>
                             <td>{{ $consultation->ending_time }}</td>
-                            @if ( $treatments->consultations_id == $consultation->id )
-                            <td><a class="nav-link" href="#">See treatment</a></td>
-                            @else
-                            <td>No treatment</td>
-                            @endif
+                            @php
+                                $matching = $treatments->where('consultations_id', $consultation->id->first())
+                            @endphp
+                            <td>
+                                @if ($matching)
+                                <a class="nav-link" href="#">See treatment</a>
+                                @else
+                                No treatment
+                                @endif
+                            </td>
                         </tr>
                     @empty
                         <tr>
