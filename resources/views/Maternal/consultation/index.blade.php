@@ -25,6 +25,7 @@
                             <td>{{ $consultation->ending_time }}</td>
                             <td><a href="{{ route('consultations.show', $consultation->id) }}"><i
                                         class="fas fa-user-circle"></a></i></td>
+                            @if(Auth::user()->role == 'Admin')
                             <td><a href="{{ route('consultations.edit', $consultation->id) }}"><i
                                         class="fas fa-pencil-alt"></a></i></td>
                             <form action="{{ route('consultations.delete', $consultation->id) }}"
@@ -34,6 +35,7 @@
                                 <td><a href="{{ route('consultations.delete', $consultation->id) }}"><i
                                             class="fas fa-trash-alt"></i></a></td>
                             </form>
+                            @endif
                         </tr>
                     @empty
                         <tr>

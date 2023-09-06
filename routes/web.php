@@ -72,6 +72,8 @@ Route::controller(ChildsController::class)->group(function (){
     Route::put('/maternal/childs/edit/update/{id}','update')->name('childs.update');
     Route::delete('/maternal/childs/delete/{id}','delete')->name('childs.delete');
     Route::get('/maternal/childs/medical_history/{id}','history')->name('childs.history');
+    Route::get('/maternal/childs/consultation','consultation_index')->name('patient.child.consultation.index');
+    Route::get('/maternal/childs/consultation/treatment/{id}','see_treatments')->name('patient.child.see.treatment');
 });
 
 Route::controller(ConsultationsController::class)->group(function (){

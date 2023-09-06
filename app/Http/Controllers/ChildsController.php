@@ -6,7 +6,10 @@ use App\Http\Requests\MyValidation;
 use App\Models\Childs;
 use App\Models\Mothers;
 use App\Models\Treatments;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon as SupportCarbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ChildsController extends Controller
@@ -101,5 +104,37 @@ class ChildsController extends Controller
         $treatments = Treatments::findOrFail($childs_id);
 
         return view('Maternal.treatment.childs.history', compact('treatments'));
+    }
+
+    public function consultation_index()
+    {
+        $treatments = Treatments::all();
+        $mothers_user_id = Auth::user()->id;
+        $mothers = Mothers::where('users_id', $mothers_user_id)->first();
+        $childs = Childs::where('mothers_id',$mothers->id);
+
+        $now = Carbon::now();
+        $week = $now->copy()->subDay(7);
+        $recentconsultations = DB::table('consultations')
+            ->where('childs_id', $childs->id)
+            ->where('date', '>=', $week)
+            ->orderBy('starting_time','desc')
+            ->get();
+        $pastconsultations = DB::table('consultations')
+            ->where('childs_id', $childs->id)
+            ->where('date', '<', $week)
+            ->orderBy('starting_time','desc')
+            ->get();
+        return view('Maternal.Patient-user.children.consultation.index',
+        compact('childs'
+        , 'recentconsultations'
+        , 'pastconsultations'
+        ,'treatments'));
+    }
+
+    public function see_treatments($id){
+        $treatments = Treatments::where('consultations_id', $id )->first();
+
+        return view('Maternal.Patient-user.consultation.show', compact('treatments'));
     }
 }
