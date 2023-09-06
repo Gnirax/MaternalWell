@@ -1,6 +1,8 @@
-@extends('Maternal.layout2')
+@extends('Maternal.layout')
 @section('content')
-    <div class="container card shadow-lg">
+    <div class="row ml-2">
+        <div class="col-9">
+            <div class="container card shadow-lg">
                 <ul class="nav nav-tabs d-flex justify-content-start">
                     @foreach ($childs as $child)
                     <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#{{ $child->firstname }}">{{ $child->firstname }}</a></li>
@@ -174,5 +176,33 @@
                     </div>
                     @endforeach
                 </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="container card shadow-lg bg-body-tertiary rounded">
+                <div class="row">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore,
+                                nostrum! Voluptates eum similique in fuga,
+                                tempora voluptate sunt recusandae,
+                                praesentium natus inventore, quaerat quasi non nostrum quibusdam sit eligendi assumenda!
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="container card shadow-lg bg-body-tertiary rounded">
+                <div class="row">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore,
+                                nostrum! Voluptates eum similique in fuga,
+                                tempora voluptate sunt recusandae,
+                                praesentium natus inventore, quaerat quasi non nostrum quibusdam sit eligendi assumenda!
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

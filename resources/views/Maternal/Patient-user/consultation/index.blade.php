@@ -1,7 +1,7 @@
 @extends('Maternal.layout')
 @section('content')
 <div class="row" style="margin-left: 10px;margin-right: 5px;">
-    <div class="col-10">
+    <div class="col-9">
         <div class="row">
             <h6 style="text-align: left">Recent &rarr;</h6>
             <div class="container card shadow-lg bg-body-tertiary rounded">
@@ -70,10 +70,34 @@
             </div>
         </div>
     </div>
-    <div class="col-2">
+    <div class="col-3">
         <div class="container card shadow-lg bg-body-tertiary rounded">
             <div class="row">
                 <a class="nav-link" href="{{ route('consultations.create.mother', $mothers->id)}}">New Consultation</a>
+            </div>
+        </div>
+        <div class="container card shadow-lg bg-body-tertiary rounded">
+            <div class="row">
+                <div class="card-body">
+                    <h5 class="card-title">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore,
+                            nostrum! Voluptates eum similique in fuga,
+                            tempora voluptate sunt recusandae,
+                            praesentium natus inventore, quaerat quasi non nostrum quibusdam sit eligendi assumenda!
+                    </h5>
+                </div>
+            </div>
+        </div>
+        <div class="container card shadow-lg bg-body-tertiary rounded">
+            <div class="row">
+                <div class="card-body">
+                    <h5 class="card-title">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore,
+                            nostrum! Voluptates eum similique in fuga,
+                            tempora voluptate sunt recusandae,
+                            praesentium natus inventore, quaerat quasi non nostrum quibusdam sit eligendi assumenda!
+                    </h5>
+                </div>
             </div>
         </div>
     </div>
