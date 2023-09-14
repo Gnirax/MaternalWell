@@ -33,7 +33,7 @@
                             <form action="{{ route('delete', $user->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <td><a href="{{ route('delete', $user->id)}}"><i class="fas fa-trash-alt"></a></td>
+                                <td><a id="del" href="{{ route('delete', $user->id) }}"><i class="fas fa-trash-alt"></a></td>
                             </form>
                         </tr>
                     @empty

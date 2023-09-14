@@ -183,11 +183,14 @@
                 <div class="row">
                     <div class="card-body">
                         <h5 class="card-title">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore,
+                                Lorem ipsum
+                        </h5>
+                        <p>
+                            dolor sit amet consectetur adipisicing elit. Inventore,
                                 nostrum! Voluptates eum similique in fuga,
                                 tempora voluptate sunt recusandae,
                                 praesentium natus inventore, quaerat quasi non nostrum quibusdam sit eligendi assumenda!
-                        </h5>
+                        </p>
                     </div>
                 </div>
             </div>

@@ -32,7 +32,7 @@
                                 method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <td><a href="{{ route('consultations.delete', $consultation->id) }}"><i
+                                <td><a id="del" href="{{ route('consultations.delete', $consultation->id) }}"><i
                                             class="fas fa-trash-alt"></i></a></td>
                             </form>
                             @endif
@@ -67,7 +67,7 @@
                                 method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <td><a href="{{ route('consultations.delete', $consultation->id) }}"><i
+                                <td><a id="del" href="{{ route('consultations.delete', $consultation->id) }}"><i
                                             class="fas fa-trash-alt"></a></td>
                             </form>
                         </tr>
@@ -101,7 +101,7 @@
                                 method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <td><a href="{{ route('consultations.delete', $consultation->id) }}"><i
+                                <td><a id="del" href="{{ route('consultations.delete', $consultation->id) }}"><i
                                             class="fas fa-trash-alt"></a></td>
                             </form>
                         </tr>

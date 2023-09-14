@@ -36,7 +36,7 @@
                                         <form method="POST" action="{{ route('treatment.delete', $pasttreatment->id) }}">
                                             @csrf
                                             @method('DELETE')
-                                            <td><a href="{{ route('treatment.delete', $pasttreatment->id) }}"><i
+                                            <td><a id="del" href="{{ route('treatment.delete', $pasttreatment->id) }}"><i
                                                         class="fas fa-trash-alt"></a></td>
                                         </form>
                                     @endif
@@ -77,7 +77,7 @@
                                         <form method="POST" action="{{ route('treatment.delete', $todaytreatment->id) }}">
                                             @csrf
                                             @method('DELETE')
-                                            <td><a href="{{ route('treatment.delete', $todaytreatment->id) }}"><i
+                                            <td><a id="del" href="{{ route('treatment.delete', $todaytreatment->id) }}"><i
                                                         class="fas fa-trash-alt"></a></td>
                                         </form>
                                     @endif
@@ -119,7 +119,7 @@
                                             action="{{ route('treatment.delete', $finishedtreatment->id) }}">
                                             @csrf
                                             @method('DELETE')
-                                            <td><a href="{{ route('treatment.delete', $finishedtreatment->id) }}"><i
+                                            <td><a id="del" href="{{ route('treatment.delete', $finishedtreatment->id) }}"><i
                                                         class="fas fa-trash-alt"></a></td>
                                         </form>
                                     @endif
@@ -160,7 +160,7 @@
                                     <form method="POST" action="{{ route('treatment.delete', $ongoingtreatment->id) }}">
                                         @csrf
                                         @method('DELETE')
-                                        <td><a href="{{ route('treatment.delete', $ongoingtreatment->id) }}"><i
+                                        <td><a id="del" href="{{ route('treatment.delete', $ongoingtreatment->id) }}"><i
                                                     class="fas fa-trash-alt"></a></td>
                                     </form>
                                     @endif

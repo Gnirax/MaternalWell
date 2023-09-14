@@ -29,7 +29,7 @@
                             <form method="POST" action="{{ route('mothers.delete', $mother->id)}}">
                                 @csrf
                                 @method('DELETE')
-                                <td><a href="{{ route('mothers.delete', $mother->id)}}"><i class="fas fa-trash-alt"></a></td>
+                                <td><a id="del" href="{{ route('mothers.delete', $mother->id)}}"><i class="fas fa-trash-alt"></a></td>
                             </form>
                     </tr>
                 @empty

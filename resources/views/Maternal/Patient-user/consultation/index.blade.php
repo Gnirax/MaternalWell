@@ -18,7 +18,7 @@
                             <td>{{ $consultation->starting_time }}</td>
                             <td>{{ $consultation->ending_time }}</td>
                             @php
-                                $matching = $treatments->where('consultations_id', $consultation->id)->first();
+                                $matching =App\Models\Treatments::where('consultations_id', $consultation->id)->first();
                             @endphp
                             <td>
                                 @if ($matching)
@@ -51,7 +51,7 @@
                             <td>{{ $consultation->starting_time }}</td>
                             <td>{{ $consultation->ending_time }}</td>
                             @php
-                                $matching = $treatments->where('consultations_id', $consultation->id->first())
+                                $matching = $treatments->where('consultations_id', $consultation->id)->first();
                             @endphp
                             <td>
                                 @if ($matching)

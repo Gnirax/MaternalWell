@@ -7,16 +7,26 @@
                 <div class="container card shadow-lg bg-body-tertiary rounded">
                     <div class="row">
                         <div class="col-7">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Modi quod animi illum ipsam ullam iure! Illo itaque laudantiu,
-                            aperiam voluptas quos maxime necessitatibus perferendis eveniet perspiciatis cupiditate ut
-                            , blanditiis quam!
+                            <div class="row">
+                                <div class="col-6">
+                                    <ul>
+                                        <li class="nav-item">Disease &rarr;</li>
+                                        <li class="nav-item">Infections &rarr;</li>
+                                        <li class="nav-item">Last visit &rarr;</li>
+                                    </ul>
+                                </div>
+                                <div class="col-6">
+                                    <ul>
+                                        <li class="nav-item">none</li>
+                                        <li class="nav-item">none</li>
+                                        <li class="nav-item">none</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-5">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Modi quod animi illum ipsam ullam iure! Illo itaque laudantiu,
-                            aperiam voluptas quos maxime necessitatibus perferendis eveniet perspiciatis cupiditate ut
-                            , blanditiis quam!
+                            <h6 class="card-title">Doctor's comment</h6>
+                            <p class="card-body">Null</p>
                         </div>
                     </div>
                 </div>
@@ -62,5 +72,5 @@
             </div>
         </div>
     </div>
-    <script type="module" src="{{ asset('myjs.js')}}"></script>
+    <script type="module" src="{{ asset('myjs.js') }}"></script>
 @endsection

@@ -163,3 +163,25 @@ textarea{
     width: 650px !important;
     height: 300px !important;
 }
+ul{
+    list-style: none;
+}
+body{
+    color: #0074E4 !important;
+}
+
+tr{
+    color:#606b75;
+}
+
+tr:hover{
+    color:#0074E4 !important;
+}
+
+.sidebar{
+    color: whitesmoke !important;
+}
+
+#del{
+    color: red !important;
+}
