@@ -1,47 +1,38 @@
-body{
-    /* color: #0074E4 !important; */
-}
+/* color: #0074E4 !important; */
 #body{
     background-image: url("{{ asset('img/third.jpg')}}");
+    width: 100%;
+    height: 100%;
+    position: absolute;
 }
 .wrapper{
     background-color: whitesmoke !important;
     font-family: PT Serif !important;
+    width: 100%;
+    height: 100%;
+    position: absolute;
     /* color: #0074E4 !important;color: #0074E4 !important; */
 }
 #login{
     font-family: Garamond !important;
-    width: 400px !important;
-    margin-top: 100px;
-    height: 300px;
+    width: 380px !important;
+    margin-top: 90px;
+    height: auto;
 }
-
-.btn{
-    width: 100px !important;
-}
-
-#register{
+#admin-edit{
     font-family: Garamond !important;
-    width: 600px !important;
-    height: auto !important;
-    margin-top: 100px;
+    width: 1000px !important;
+    margin-top: 80px;
+    height: auto;
+    overflow: hidden;
 }
-#register div{
-    width: 100% !important;
-    margin-top: 5px;
-}
-
-#admin-register{
+#admin-show{
     font-family: Garamond !important;
-    width: 600px !important;
-    height: auto !important;
-    margin-top: 100px;
+    width: 700px !important;
+    margin-top: 90px;
+    height: auto;
+    overflow: hidden;
 }
-#admin-register div{
-    width: 100% !important;
-    margin-top: 5px;
-}
-
 .nav-link{
     font-size: 16px !important;
     color:  #0074E4;
@@ -53,47 +44,7 @@ body{
 .nav link:active{
     text-decoration: underline !important;
 }
-#them_btn{
-    display: inline !important;
-}
 
-th,td{
-    width: auto !important;
-}
-
-#child_index{
-    width: 900px !important;
-}
-#mother_index{
-    width: 900px;
-}
-
-#number{
-    width: 32px !important;
-}
-
-#info{
-    width: 500px !important;
-    font-size: 12px !important;
-}
-.container{
-    height: auto !important;
-}
-#btn{
-    width: 150px !important;
-    margin-top: 10px;
-    margin-bottom: 100px;
-}
-#treatment{
-    margin-top: 100px;
-    width: 700px;
-    height: 600px;
-}
-
-#consultation{
-    margin-top: 10px !important;
-    width: 500px !important;
-}
 #mySidenav{
     display: inline-block;
 }

@@ -41,8 +41,6 @@ Route::controller(MaternalUsersController::class)->group(function (){
     Route::get('/maternal','welcome')->name('welcome');
     Route::post('/maternal/login','login_user')->name('login.user');
     Route::get('/maternal/login/index','login_index')->name('login.index');
-    Route::get('/maternal/register','register_index')->name('register.index');
-    Route::post('/maternal/register/store','register_users')->name('register.user');
     Route::get('/maternal/dashboard','home')->name('dashboard');
     Route::get('maternal/logout','logout')->name('logout.user');
 });

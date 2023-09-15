@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('consultations', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('treatments_id');
             $table->unsignedBigInteger('nurses_id');
             $table->unsignedBigInteger('doctors_id');
             $table->unsignedBigInteger('mothers_id')->nullable();
@@ -22,6 +23,11 @@ return new class extends Migration
             $table->time('ending_time');
             $table->timestamps();
 
+            $table->foreign('treatments_id')
+            ->references('id')
+            ->on('treatments')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
             $table->foreign('nurses_id')
             ->references('id')
             ->on('nurses')

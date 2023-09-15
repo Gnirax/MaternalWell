@@ -10,6 +10,7 @@ class Consultations extends Model
     use HasFactory;
 
     protected $fillable=[
+        'treatments_id',
         'nurses_id',
         'doctors_id',
         'mothers_id',
@@ -32,6 +33,6 @@ class Consultations extends Model
     }
 
     public function treatments(){
-        return $this->hasOne(Treatments::class);
+        return $this->belongs(Treatments::class);
     }
 }

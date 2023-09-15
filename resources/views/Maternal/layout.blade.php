@@ -132,8 +132,13 @@
                             <li class="nav-item">
                                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                                     <div class="image">
+                                        @if (Auth::user()->sex == 'Female')
                                         <img src="{{ asset('img/avatar2.png') }}" class="img-circle elevation-2"
                                             alt="User Image">
+                                        @else
+                                        <img src="{{ asset('img/avatar.png') }}" class="img-circle elevation-2"
+                                            alt="User Image">
+                                        @endif
                                     </div>
                                     <div class="info">
                                         <a href="#" class="d-block">{{ Auth::user()->username }}</a>

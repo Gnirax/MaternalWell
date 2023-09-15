@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('treatments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('consultations_id');
             $table->unsignedBigInteger('nurses_id')->nullable();
             $table->unsignedBigInteger('doctors_id');
             $table->unsignedBigInteger('mothers_id')->nullable();
@@ -45,11 +44,6 @@ return new class extends Migration
             $table->foreign('childs_id')
             ->references('id')
             ->on('childs')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
-            $table->foreign('consultations_id')
-            ->references('id')
-            ->on('consultations')
             ->onDelete('cascade')
             ->onUpdate('cascade');
         });

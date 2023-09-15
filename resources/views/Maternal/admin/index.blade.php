@@ -1,48 +1,58 @@
 @extends('Maternal.layout')
 @section('content')
     @if (Auth::user()->role == 'Admin')
-        <div class="container shadow-lg p-3 mb-5 bg-body-tertiary rounded">
-            <h2 style="text-align: center">USERS' TABLE</h2>
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>FIRSTNAME</th>
-                        <th>MIDDLENAME</th>
-                        <th>SURNAME</th>
-                        <th>USERNAME</th>
-                        <th>EMAIL</th>
-                        <th>ROLE</th>
-                        <th>SEX</th>
-                        <th>BIRTHDATE</th>
-                        <th colspan="3">ACTIONS</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse($users as $user)
+        <div class="row">
+            <div class="d-flex justify-content-end">
+                <h6 class="text-center"><a href="{{ route('create') }}">Add user &rarr;</a></h6>
+            </div>
+        </div>
+        <div class="row">
+            <div class="container shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+                <h2 style="text-align: center">USERS' TABLE</h2>
+                <table class="table table-hover">
+                    <thead>
                         <tr>
-                            <td>{{ $user->firstname }}</td>
-                            <td>{{ $user->middlename }}</td>
-                            <td>{{ $user->surname }}</td>
-                            <td>{{ $user->username }}</td>
-                            <td>{{ $user->email }}</td>
-                            <td>{{ $user->role }}</td>
-                            <td>{{ $user->sex }}</td>
-                            <td>{{ $user->birthdate }}</td>
-                            <td><a href="{{ route('show', $user->id) }}"><i class="fas fa-user-circle"></a></td>
-                            <td><a href="{{ route('edit', $user->id) }}"><i class="fas fa-pencil-alt"></a></td>
-                            <form action="{{ route('delete', $user->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <td><a id="del" href="{{ route('delete', $user->id) }}"><i class="fas fa-trash-alt"></a></td>
-                            </form>
+                            <th>FIRSTNAME</th>
+                            <th>MIDDLENAME</th>
+                            <th>SURNAME</th>
+                            <th>USERNAME</th>
+                            <th>EMAIL</th>
+                            <th>ROLE</th>
+                            <th>SEX</th>
+                            <th>BIRTHDATE</th>
+                            <th colspan="3">ACTIONS</th>
                         </tr>
-                    @empty
-                        <tr>
-                            <td colspan="11">no records found</td>
-                        </tr>
-                    @endforelse
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @forelse($users as $user)
+                            <tr>
+                                <td>{{ $user->firstname }}</td>
+                                <td>{{ $user->middlename }}</td>
+                                <td>{{ $user->surname }}</td>
+                                <td>{{ $user->username }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->role }}</td>
+                                <td>{{ $user->sex }}</td>
+                                <td>{{ $user->birthdate }}</td>
+                                <td><a href="{{ route('show', $user->id) }}"><i class="fas fa-user-circle"></a></td>
+                                <td><a href="{{ route('edit', $user->id) }}"><i class="fas fa-pencil-alt"></a></td>
+                                @if (Auth::user()->id != $user->id)
+                                <form action="{{ route('delete', $user->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <td><a id="del" href="{{ route('delete', $user->id) }}"><i
+                                                class="fas fa-trash-alt"></a></td>
+                                </form>
+                                @endif
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="11">no records found</td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
         </div>
     @endif
 @endsection
