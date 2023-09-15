@@ -15,16 +15,14 @@
             @endif
             <div class="row">
                 <label class="form-label">Full name:</label>
-                <div class="row">
-                    <div class="col-4">
-                        <input class="form-control" type="text" name="firstname" placeholder="First Name">
-                    </div>
-                    <div class="col-4">
-                        <input class="form-control" type="text" name="middlename" placeholder="Middle Name">
-                    </div>
-                    <div class="col-4">
-                        <input class="form-control" type="text" name="surname" placeholder="Surname">
-                    </div>
+                <div class="col-4">
+                    <input class="form-control" type="text" name="firstname" placeholder="First Name">
+                </div>
+                <div class="col-4">
+                    <input class="form-control" type="text" name="middlename" placeholder="Middle Name">
+                </div>
+                <div class="col-4">
+                    <input class="form-control" type="text" name="surname" placeholder="Surname">
                 </div>
             </div>
             <div class="row">
@@ -49,33 +47,25 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12">
-                    <div class="row">
-                        <label class="form-label">Address:</label>
-                        <div class="col-6">
-                            <input class="form-control" type="text" name="region" placeholder="Region">
-                        </div>
-                        <div class="col-6">
-                            <input class="form-control" type="text" name="address"
-                                placeholder="District/Street/House No.">
-                        </div>
-                    </div>
+                <label class="form-label">Address:</label>
+                <div class="col-6">
+                    <input class="form-control" type="text" name="region" placeholder="Region">
+                </div>
+                <div class="col-6">
+                    <input class="form-control" type="text" name="address" placeholder="District/Street/House No.">
                 </div>
             </div>
             <div class="row">
-                <div class="col-12">
-                    <div class="row">
-                        <label class="form-label">Contacts:</label>
-                        <div class="col-6">
-                            <input class="form-control" type="email" name="email" placeholder="Email">
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                <input class="form-control" type="tel" name="phone_number" placeholder="Phone number">
-                            </div>
-                        </div>
+                <label class="form-label">Contacts:</label>
+                <div class="col-6">
+                    <input class="form-control" type="email" name="email" placeholder="Email">
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <input class="form-control" type="tel" name="phone_number" placeholder="Phone number">
                     </div>
                 </div>
+
             </div>
             <div class="row">
                 <label class="form-label">Emergency Contact Information:</label>
@@ -114,10 +104,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12">
-                        <input class="form-control mt-2" type="text" name="family_history_of_medical_condition"
-                            placeholder="Family history of medical conditions">
-                    </div>
+                    <input class="form-control mt-2" type="text" name="family_history_of_medical_condition"
+                        placeholder="Family history of medical conditions">
                 </div>
             </div>
             <div class="row">
@@ -146,8 +134,14 @@
                     </div>
                 </div>
             </div>
-            <div class="row d-flex justify-content-center">
-                <button class="btn btn-outline-success mt-2 btn-sm mb-3" type="submit">REGISTER</button>
+            <div class="row">
+                <div class="col-5"></div>
+                <div class="col-2">
+                    <div class="d-flex justify-content-center">
+                        <button class="btn btn-outline-success mt-2 btn-sm mb-3" type="submit">REGISTER</button>
+                    </div>
+                </div>
+                <div class="col-5"></div>
             </div>
         </form>
     </div>

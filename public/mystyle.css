@@ -33,6 +33,12 @@
     height: auto;
     overflow: hidden;
 }
+#mother_index{
+    width: 1000px;
+}
+#child_index{
+    width: 1000px;
+}
 .nav-link{
     font-size: 16px !important;
     color:  #0074E4;

@@ -1,6 +1,6 @@
 @extends('Maternal.layout')
 @section('content')
-    <div id="mother_index" class="container card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+    <div id="mother_index" class="container card shadow-lg bg-body-tertiary rounded">
         <form method="POST" action="{{ route('mothers.store') }}">
             @csrf
             <h2 style="text-align: center">MOTHER-PATIENT REGISTRATION FORM</h2>
@@ -14,22 +14,16 @@
                 </div>
             @endif
             <div class="row">
-                <div class="row">
-                    <div class="col-12">
-                        <label class="form-label">Full name:</label>
-                    </div>
+                <label class="form-label">Full name:</label>
+                <div class="col-4">
+                    <input class="form-control" type="text" name="firstname" placeholder="First Name">
                 </div>
-                <div class="row">
-                    <div class="col-4">
-                        <input class="form-control" type="text" name="firstname" placeholder="First Name">
-                    </div>
-                    <div class="col-4">
-                        <input class="form-control" type="text" name="middlename" placeholder="Middle Name">
-                    </div>
-                    <div class="col-4">
-                        <input class="form-control" type="text" name="surname" placeholder="Surname">
-                        <input type="hidden" name="sex" value="Female">
-                    </div>
+                <div class="col-4">
+                    <input class="form-control" type="text" name="middlename" placeholder="Middle Name">
+                </div>
+                <div class="col-4">
+                    <input class="form-control" type="text" name="surname" placeholder="Surname">
+                    <input type="hidden" name="sex" value="Female">
                 </div>
             </div>
             <div class="row">
@@ -89,22 +83,20 @@
             <div class="row">
                 <div class="col-4">
                     <label class="form-label mt-3">Number of previous pregnancies:</label>
-                    <input id="number" type="number" name="number_of_previous_pregnancies">
+                    <input class="form-control" id="number" type="number" name="number_of_previous_pregnancies">
                 </div>
                 <div class="col-4">
                     <label class="form-label mt-3">Number of previous live births:</label>
-                    <input id="number" type="number" name="number_of_previous_live_births">
+                    <input class="form-control" id="number" type="number" name="number_of_previous_live_births">
                 </div>
                 <div class="col-4">
                     <label class="form-label mt-3">Number of previous miscarriages:</label>
-                    <input id="number" type="number" name="number_of_previous_miscarriages">
+                    <input class="form-control" id="number" type="number" name="number_of_previous_miscarriages">
                 </div>
             </div>
             <div class="row">
-                <div class="col-12">
-                    <label class="form-label">Medical history:</label>
-                </div>
                 <div class="row">
+                    <label class="form-label">Medical history:</label>
                     <div class="col-6">
                         <input class="form-control mt-2" type="text" name="allergies" placeholder="Allergies">
                     </div>
@@ -112,8 +104,7 @@
                         <input class="form-control mt-2" type="text" name="chronic_medical_condition"
                             placeholder="Any chronic medical condition">
                     </div>
-                </div>
-                <div class="row">
+
                     <div class="col-6">
                         <input class="form-control mt-2" type="text" name="current_medication"
                             placeholder="Any current medications..">
@@ -124,17 +115,13 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12">
-                        <input class="form-control mt-2" type="text" name="family_history_of_medical_condition"
-                            placeholder="Family history of medical conditions">
-                    </div>
+                    <input class="form-control mt-2" type="text" name="family_history_of_medical_condition"
+                        placeholder="Family history of medical conditions">
                 </div>
             </div>
             <div class="row">
                 <div class="row">
-                    <div class="col-12">
-                        <label class="form-label">Insurance Information:</label>
-                    </div>
+                    <label class="form-label">Insurance Information:</label>
                 </div>
                 <div class="row">
                     <div class="col-6">
@@ -148,7 +135,8 @@
                 </div>
                 <div class="row">
                     <div class="col-4">
-                        <input class="form-control mt-2" type="text" name="member_number" placeholder="Member number">
+                        <input class="form-control mt-2" type="text" name="member_number"
+                            placeholder="Member number">
                     </div>
                     <div class="col-4">
                         <input class="form-control mt-2" type="text" name="group_number" placeholder="Group number">
@@ -159,8 +147,14 @@
                     </div>
                 </div>
             </div>
-            <div class="row d-flex justify-content-center">
-                <button class="btn btn-outline-success mt-2 btn-sm mb-3" type="submit">REGISTER</button>
+            <div class="row">
+                <div class="col-5"></div>
+                <div class="col-2">
+                    <div class="d-flex justify-content-center">
+                        <button class="btn btn-outline-success mt-2 btn-sm mb-3" type="submit">REGISTER</button>
+                    </div>
+                </div>
+                <div class="col-5"></div>
             </div>
         </form>
     </div>
