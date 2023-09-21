@@ -24,7 +24,7 @@ class Maternal_users extends Model implements Authenticatable
         'birthdate',
         'sex',
         'region',
-        'address',
+        'home_address',
         'phone_number',
         'username',
         'email',

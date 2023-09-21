@@ -21,7 +21,7 @@ class MaternalUsersSeeder extends Seeder
             'birthdate' => '2000-02-20',
             'sex' => 'Male',
             'region' => 'Dar es Salaam',
-            'address' => 'District/Street/House no.1',
+            'home_address' => 'District/Street/House no.1',
             'phone_number' => '0615151515',
             'username' => 'admin101',
             'email' => 'admin@gmail.com',

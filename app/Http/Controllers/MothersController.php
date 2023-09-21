@@ -33,11 +33,10 @@ class MothersController extends Controller
             'surname' => $request->surname,
             'birthdate' => $request->birthdate,
             'region' => $request->region,
-            'address' => $request->address,
+            'home_address' => $request->home_address,
             'email' => $request->email,
             'phone_number' => $request->phone_number
         ]);
-
 
         Mothers::create([
             'users_id' => $maternal_users->id,
@@ -46,15 +45,22 @@ class MothersController extends Controller
             'surname' => $request->surname,
             'birthdate' => $request->birthdate,
             'sex' => $request->sex,
+            'nationality' => $request->nationality,
+            'marital_status' => $request->marital_status,
             'region' => $request->region,
-            'address' => $request->address,
+            'home_address' => $request->home_address,
             'email' => $request->email,
             'phone_number' => $request->phone_number,
+            'husbands_name' => $request->husbands_name,
+            'husbands_email' => $request->husbands_email,
+            'husbands_phone_number' => $request->husbands_phone_number,
+            'husbands_nationality' => $request->husbands_nationality,
+            'husbands_region' => $request->husbands_region,
+            'husbands_home_address' => $request->husbands_home_address,
             'emergency_contact_name' => $request->emergency_contact_name,
             'relationship_with_patient' => $request->relationship_with_patient,
             'emergency_contact_number' => $request->emergency_contact_number,
-            'estimated_due_date' => $request->estimated_due_date,
-            'last_menstrual_period' => $request->last_menstrual_period,
+            'emergency_contact_home_address' => $request->emergency_contact_home_address,
             'number_of_previous_pregnancies' => $request->number_of_previous_pregnancies,
             'number_of_previous_live_births' => $request->number_of_previous_live_births,
             'number_of_previous_miscarriages' => $request->number_of_previous_miscarriages,
@@ -86,21 +92,29 @@ class MothersController extends Controller
 
     public function update(Request $request, Mothers $id)
     {
+        // dd($request->all());
         $id->update([
             'firstname' => $request->firstname,
             'middlename' => $request->middlename,
             'surname' => $request->surname,
             'birthdate' => $request->birthdate,
             'sex' => $request->sex,
+            'nationality' => $request->nationality,
+            'marital_status' => $request->marital_status,
             'region' => $request->region,
-            'address' => $request->address,
+            'home_address' => $request->home_address,
             'email' => $request->email,
             'phone_number' => $request->phone_number,
+            'husbands_name' => $request->husbands_name,
+            'husbands_email' => $request->husbands_email,
+            'husbands_phone_number' => $request->husbands_phone_number,
+            'husbands_nationality' => $request->husbands_nationality,
+            'husbands_region' => $request->husbands_region,
+            'husbands_home_address' => $request->husbands_home_address,
             'emergency_contact_name' => $request->emergency_contact_name,
-            'relationship_with_patient' => $request->relationship_to_patient,
+            'relationship_with_patient' => $request->relationship_with_patient,
             'emergency_contact_number' => $request->emergency_contact_number,
-            'estimated_due_date' => $request->estimated_due_date,
-            'last_menstrual_period' => $request->last_menstrual_period,
+            'emergency_contact_home_address' => $request->emergency_contact_home_address,
             'number_of_previous_pregnancies' => $request->number_of_previous_pregnancies,
             'number_of_previous_live_births' => $request->number_of_previous_live_births,
             'number_of_previous_miscarriages' => $request->number_of_previous_miscarriages,
@@ -142,22 +156,27 @@ class MothersController extends Controller
         $recentconsultations = DB::table('consultations')
             ->where('mothers_id', $mothers->id)
             ->where('date', '>=', $week)
-            ->orderBy('starting_time','desc')
+            ->orderBy('starting_time', 'desc')
             ->get();
         $pastconsultations = DB::table('consultations')
             ->where('mothers_id', $mothers->id)
             ->where('date', '<', $week)
-            ->orderBy('starting_time','desc')
+            ->orderBy('starting_time', 'desc')
             ->get();
-        return view('Maternal.Patient-user.consultation.index',
-        compact('mothers'
-        , 'recentconsultations'
-        , 'pastconsultations'
-        ,'treatments'));
+        return view(
+            'Maternal.Patient-user.consultation.index',
+            compact(
+                'mothers',
+                'recentconsultations',
+                'pastconsultations',
+                'treatments'
+            )
+        );
     }
 
-    public function see_treatments($id){
-        $treatments = Treatments::where('consultations_id', $id )->first();
+    public function see_treatments($id)
+    {
+        $treatments = Treatments::where('consultations_id', $id)->first();
 
         return view('Maternal.Patient-user.consultation.show', compact('treatments'));
     }
@@ -184,16 +203,17 @@ class MothersController extends Controller
         return view('Maternal.Patient-user.progress.index', compact('mothers'));
     }
 
-    public function children_index(){
+    public function children_index()
+    {
         $mothers_user_id = Auth::user()->id;
         $mothers_id = Mothers::where('users_id', $mothers_user_id)->value('mothers.id');
-        $childs = Childs::where('mothers_id',$mothers_id)->get();
+        $childs = Childs::where('mothers_id', $mothers_id)->get();
         $mothers = Mothers::where('users_id', $mothers_user_id)
             // ->join('consultations', 'consultations.mothers_id', 'mothers.id')
             // ->join('treatments', 'treatments.mothers_id', 'mothers.id')
             // ->select('consultations.*', 'treatments.*')
             ->get();
-            // dd($childs);
-        return view('Maternal.Patient-user.children.index', compact('mothers','childs'));
+        // dd($childs);
+        return view('Maternal.Patient-user.children.index', compact('mothers', 'childs'));
     }
 }

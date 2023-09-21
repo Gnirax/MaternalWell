@@ -1,4 +1,4 @@
-@extends('Maternal.layout')
+ @extends('Maternal.layout')
 @section('content')
     <div class="container card shadow-lg">
         <h2 style="text-align: center">CONSULTATIONS</h2>

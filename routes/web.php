@@ -52,7 +52,7 @@ Route::controller(MothersController::class)->group(function (){
     Route::get('/maternal/mothers/show/{id}','show')->name('mothers.show');
     Route::get('/maternal/mothers/edit/{id}','edit')->name('mothers.edit');
     Route::put('/maternal/mothers/edit/update/{id}','update')->name('mothers.update');
-    Route::delete('/maternal/mothers/delete/{id}','delete')->name('mothers.delete');
+    Route::get('/maternal/mothers/delete/{id}','delete')->name('mothers.delete');
     Route::get('/maternal/mothers/medical_history/{id}','history')->name('mothers.history');
     Route::get('/maternal/mothers/consultation','consultation_index')->name('patient.consultation.index');
     Route::get('/maternal/mothers/medication','medication_index')->name('patient.medication.index');
@@ -68,7 +68,7 @@ Route::controller(ChildsController::class)->group(function (){
     Route::get('/maternal/childs/show/{id}','show')->name('childs.show');
     Route::get('/maternal/childs/edit/{id}','edit')->name('childs.edit');
     Route::put('/maternal/childs/edit/update/{id}','update')->name('childs.update');
-    Route::delete('/maternal/childs/delete/{id}','delete')->name('childs.delete');
+    Route::get('/maternal/childs/delete/{id}','delete')->name('childs.delete');
     Route::get('/maternal/childs/medical_history/{id}','history')->name('childs.history');
     Route::get('/maternal/childs/consultation','consultation_index')->name('patient.child.consultation.index');
     Route::get('/maternal/childs/consultation/treatment/{id}','see_treatments')->name('patient.child.see.treatment');
