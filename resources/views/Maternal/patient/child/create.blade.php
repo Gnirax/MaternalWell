@@ -40,7 +40,6 @@
                     </div>
                     <div class="col-4">
                         <input class="form-control" type="text" name="surname" placeholder="Surname">
-                        <input type="hidden" name="sex" value="Female">
                     </div>
                 </div>
                 <div class="row mb-1">

@@ -10,12 +10,11 @@
             </button>
         </a>
     </div>
-    </div>
     <div class="container-fluid card shadow-lg bg-body-tertiary rounded" id="profile">
         <div class="row">
             <h3 class="d-flex justify-content-center">{{ $mothers->firstname }}'s Profile</h3>
             <div class="dropdown-center d-flex justify-content-end">
-                <button class="btn btn-outline-primary dropdown-toggle btn-sm" data-bs-toggle="dropdown">
+                <button class="btn btn-outline-primary dropdown-toggle btn-sm mb-1" data-bs-toggle="dropdown">
                     ACTIONS
                 </button>
                 <ul class="dropdown-menu">
@@ -79,7 +78,7 @@
                     <form>
                         @csrf
                         <ul class="nav nav-tabs justify-content-start mb-2">
-                            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#personnel" active>
+                            <li class="nav-item"><a class="nav-link axtive" data-toggle="tab" href="#personnel">
                                     <label class="form-label">
                                         <h5>Personnel Details</h5>
                                     </label>
@@ -113,7 +112,7 @@
                                 </a></li>
                         </ul>
                         <div class="tab-content">
-                            <div id="personnel" class="tab-pane fade active">
+                            <div id="personnel" class="tab-pane fade" >
                                 <div class="row mb-2 mt-2">
                                     <div class="row mb-2">
                                         <div class="col-3">

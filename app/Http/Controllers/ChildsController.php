@@ -31,7 +31,7 @@ class ChildsController extends Controller
     {
         $request->validated();
         $mothers = Mothers::where('mothers.id', $id->id)->first();
-        $nationality = ( $request->fathers_nationality == $mothers->nationality) ? $request->fathers_nationality :
+        $nationality = ($request->fathers_nationality == $mothers->nationality) ? $request->fathers_nationality :
             $request->fathers_nationality . 'and' . $mothers->nationality;
         Childs::create([
             'mothers_id' => $mothers->id,
@@ -71,14 +71,15 @@ class ChildsController extends Controller
     {
         $childs = $id;
         $mothers = Mothers::where('mothers.id', $id->mothers_id)->first();
-        $consultations = Consultations::where('childs_id', $id->id)->orderBy('created_at','desc')->first();
+        $consultations = Consultations::where('childs_id', $id->id)->orderBy('created_at', 'desc')->first();
         return view('Maternal.patient.child.show', compact('childs', 'mothers', 'consultations'));
     }
 
     public function edit(Childs $id)
     {
         $childs = $id;
-        $mothers = Mothers::all();
+        $mothers = Mothers::where('mothers.id', $id->mothers_id)->first();
+        $consultations = Consultations::where('childs_id', $id->id)->orderBy('created_at', 'desc')->first();
         return view('Maternal.patient.child.edit', compact('childs', 'mothers'));
     }
 
