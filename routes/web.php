@@ -63,8 +63,8 @@ Route::controller(MothersController::class)->group(function (){
 
 Route::controller(ChildsController::class)->group(function (){
     Route::get('/maternal/childs/index','index')->name('childs.index');
-    Route::get('/maternal/childs/create','create')->name('childs.create');
-    Route::post('/maternal/childs/create/store','store')->name('childs.store');
+    Route::get('/maternal/childs/create/{id}','create')->name('childs.create');
+    Route::post('/maternal/childs/create/store/{id}','store')->name('childs.store');
     Route::get('/maternal/childs/show/{id}','show')->name('childs.show');
     Route::get('/maternal/childs/edit/{id}','edit')->name('childs.edit');
     Route::put('/maternal/childs/edit/update/{id}','update')->name('childs.update');

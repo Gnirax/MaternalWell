@@ -1,9 +1,8 @@
 @extends('Maternal.layout')
 @section('content')
 <div class="container shadow-lg p-3 mb-5 bg-body-tertiary rounded">
-    <h2 style="text-align: center">CHILDREN'S TABLE</h2>
+    <h3 style="text-align: center">CHILDREN'S TABLE</h3>
     <div class="d-flex justify-content-start">
-        <a href="{{ route('childs.create')}}">Add patient &rarr;</a>
     </div>
     <table class="table table-hover">
         <thead>
@@ -14,7 +13,6 @@
                 <th>SEX</th>
                 <th>REGION</th>
                 <th>ADDRESS</th>
-                <th>PHONE NUMBER</th>
                 <th colspan="3">ACTIONS</th>
             </tr>
         </thead>
@@ -26,8 +24,7 @@
                 <td>{{$child->birthdate}}</td>
                 <td>{{$child->sex}}</td>
                 <td>{{$child->region}}</td>
-                <td>{{$child->address}}</td>
-                <td>{{$child->phone_number}}</td>
+                <td>{{$child->home_address}}</td>
                 <td><a href="{{ route('childs.show', $child->id)}}"><i class="fas fa-user-circle"></a></td>
                 <td><a href="{{ route('childs.edit', $child->id)}}"><i class="fas fa-pencil-alt"></a></td>
                 <form method="POST" action="{{ route('childs.delete', $child->id)}}">

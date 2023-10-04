@@ -2,7 +2,7 @@
 @section('content')
     @if (Auth::user()->role == 'Admin')
         <div class="container shadow-lg bg-body-tertiary rounded">
-            <h2 style="text-align: center">USERS' TABLE</h2>
+            <h3 style="text-align: center">USERS' TABLE</h3>
             <div class="d-flex justify-content-start">
                 <h6 class="text-center"><a href="{{ route('create') }}">Add user &rarr;</a></h6>
             </div>

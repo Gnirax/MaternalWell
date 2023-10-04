@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MyValidation;
 use App\Models\Childs;
+use App\Models\Consultations;
 use App\Models\Maternal_users;
 use App\Models\Mothers;
+use App\Models\Pregnancy;
 use App\Models\Treatments;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -24,8 +27,9 @@ class MothersController extends Controller
         return view('Maternal.patient.mother.create');
     }
 
-    public function store(Request $request)
+    public function store(MyValidation $request)
     {
+        $request->validated();
 
         $maternal_users = Maternal_users::create([
             'firstname' => $request->firstname,
@@ -38,7 +42,8 @@ class MothersController extends Controller
             'phone_number' => $request->phone_number
         ]);
 
-        Mothers::create([
+
+        $mothers = Mothers::create([
             'users_id' => $maternal_users->id,
             'firstname' => $request->firstname,
             'middlename' => $request->middlename,
@@ -75,25 +80,49 @@ class MothersController extends Controller
             'insurance_phone_number' => $request->insurance_phone_number,
             'preferred_language' => $request->preferred_language
         ]);
+
+        $pregnancy_count = 1 + ($request->number_of_previous_pregnancies);
+        Pregnancy::create([
+            'mothers_id' => $mothers->id,
+            'pregnancy_count' => $pregnancy_count,
+            'estimated_due_date' => $request->estimated_due_date,
+            'last_menstrual_period' => $request->last_menstrual_period
+        ]);
+
         return redirect()->route('mothers.index');
     }
 
     public function show(Mothers $id)
     {
         $mothers = $id;
-        return view('maternal.patient.mother.show', compact('mothers'));
+        $pregnancy = Pregnancy::where('mothers_id', $id->id)->first();
+        $consultations = Consultations::where('mothers_id', $id->id)->orderBy('created_at','desc')->first();
+        return view('maternal.patient.mother.show', compact('mothers', 'pregnancy', 'consultations'));
     }
 
     public function edit(Mothers $id)
     {
         $mothers = $id;
-        return view('maternal.patient.mother.edit', compact('mothers'));
+        $pregnancy = Pregnancy::where('mothers_id', $id->id)->first();
+        return view('maternal.patient.mother.edit', compact('mothers', 'pregnancy'));
     }
 
     public function update(Request $request, Mothers $id)
     {
         // dd($request->all());
-        $id->update([
+
+        Maternal_users::where('id', $id->users_id)->update([
+            'firstname' => $request->firstname,
+            'middlename' => $request->middlename,
+            'surname' => $request->surname,
+            'birthdate' => $request->birthdate,
+            'region' => $request->region,
+            'home_address' => $request->home_address,
+            'email' => $request->email,
+            'phone_number' => $request->phone_number
+        ]);
+
+        $mothers = $id->update([
             'firstname' => $request->firstname,
             'middlename' => $request->middlename,
             'surname' => $request->surname,
@@ -128,6 +157,14 @@ class MothersController extends Controller
             'group_number' => $request->group_number,
             'insurance_phone_number' => $request->insurance_phone_number,
             'preferred_language' => $request->preferred_language
+        ]);
+
+        $pregnancy_count = 1 + ($request->number_of_previous_pregnancies);
+
+        Pregnancy::where('mothers_id', $id)->update([
+            'pregnancy_count' => $pregnancy_count,
+            'estimated_due_date' => $request->estimated_due_date,
+            'last_menstrual_period' => $request->last_menstrual_period
         ]);
         return redirect()->route('mothers.index');
     }

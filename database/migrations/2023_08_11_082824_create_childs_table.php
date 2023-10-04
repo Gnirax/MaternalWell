@@ -20,13 +20,13 @@ return new class extends Migration
             $table->date('birthdate');
             $table->string('sex');
             $table->string('nationality');
+            $table->string('region');
             $table->string('home_address');
-            $table->string('email');
-            $table->string('phone_number');
             $table->string('fathers_name')->nullable();
             $table->string('fathers_email')->nullable();
             $table->string('fathers_phone_number')->nullable();
             $table->string('fathers_nationality')->nullable();
+            $table->string('fathers_region')->nullable();
             $table->string('fathers_home_address')->nullable();
             $table->string('emergency_contact_name');
             $table->string('relationship_with_patient');

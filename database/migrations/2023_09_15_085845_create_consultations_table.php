@@ -19,8 +19,12 @@ return new class extends Migration
             $table->unsignedBigInteger('mothers_id')->nullable();
             $table->unsignedBigInteger('childs_id')->nullable();
             $table->date('date');
-            $table->time('starting_time');
-            $table->time('ending_time');
+            $table->string('pressure');
+            $table->string('weight');
+            $table->string('height');
+            $table->string('BMI');
+            $table->time('starting_time')->nullable();
+            $table->time('ending_time')->nullable();
             $table->timestamps();
 
             $table->foreign('treatments_id')

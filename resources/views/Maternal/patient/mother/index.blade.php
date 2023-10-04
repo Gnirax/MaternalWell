@@ -1,7 +1,7 @@
 @extends('Maternal.layout')
 @section('content')
     <div class="container shadow-lg p-3 mb-5 bg-body-tertiary rounded">
-        <h2 style="text-align: center">MOTHER'S TABLE</h2>
+        <h3 style="text-align: center">MOTHER'S TABLE</h3>
         <div class="d-flex justify-content-start">
             <a href="{{ route('mothers.create') }}">Add patient &rarr;</a>
         </div>
@@ -22,7 +22,7 @@
                         <td>{{ $mother->firstname }}</td>
                         <td>{{ $mother->surname }}</td>
                         <td>{{ $mother->region }}</td>
-                        <td>{{ $mother->address }}</td>
+                        <td>{{ $mother->home_address }}</td>
                         <td>{{ $mother->phone_number }}</td>
                         <td><a href="{{ route('mothers.show', $mother->id)}}"><i class="fas fa-user-circle"></a></td>
                             <td><a href="{{ route('mothers.edit', $mother->id)}}"><i class="fas fa-pencil-alt"></a></td>

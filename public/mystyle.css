@@ -22,15 +22,15 @@
 #admin-edit{
     font-family: Garamond !important;
     width: 1000px !important;
-    margin-top: 80px;
+    margin-top: 30px;
     height: auto;
     overflow: hidden;
 }
 #admin-show{
     font-family: Garamond !important;
-    width: 700px !important;
-    margin-top: 90px;
-    height: auto;
+    width: 800px !important;
+    margin-top: 30px;
+    height: 400px auto;
     overflow: hidden;
 }
 #mother_index{
@@ -159,6 +159,7 @@ body {
     padding: 40px;
     width: 70%;
     min-width: 300px;
+    height: auto;
 }
 
 h1 {
@@ -220,4 +221,12 @@ button:hover {
 
 #husbandinfo{
     display: none;
+}
+
+#profile{
+    width: 1130px;
+}
+
+#show-list {
+    color: rgb(88, 85, 85);
 }

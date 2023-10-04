@@ -1,9 +1,19 @@
 @extends('Maternal.layout')
 @section('content')
+    <div class="d-flex justify-content-end">
+        <a href={{ url()->previous() }}>
+            <button class="btn btn-primary" style="width:78px; height: 40px; margin-bottom: 10px;">
+                <p style="font-size: 18px;">
+                    <i class="fas fa-angle-left"></i>
+                    Back
+                </p>
+            </button>
+        </a>
+    </div>
     <form id="regForm" class="container shadow-lg bg-body-tertiary rounded" action="{{ route('mothers.store') }}"
         method="POST">
         @csrf
-        <h1>MOTHER-PATIENT REGISTRATION FORM</h1>
+        <h3 style="text-align: center">MOTHER-PATIENT REGISTRATION FORM</h3>
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -79,7 +89,7 @@
                 </div>
             </div>
         </div>
-        <div class="tab" id="skip">
+        <div class="tab">
             <div class="row" id="husbandinfo" style="display: none">
                 <div class="col-12">
                     <label class="form-label">
@@ -94,7 +104,8 @@
                     </div>
                     <div class="col-6">
                         <label class="form-label">Nationality:</label>
-                        <input class="form-control" type="text" name="husbands_nationality" placeholder="e.g Tanzanian">
+                        <input class="form-control" type="text" name="husbands_nationality"
+                            placeholder="e.g Tanzanian">
                     </div>
                 </div>
                 <div class="row mb-1">
@@ -163,6 +174,16 @@
                 </label>
             </div>
             <div class="row">
+                <div class="col-6">
+                    <label class="form-label">Estimated Due Date:</label>
+                    <input class="form-control" type="date" name="estimated_due_date">
+                </div>
+                <div class="col-6">
+                    <label class="form-label ">Last Menstrual Period:</label>
+                    <input class="form-control" type="date" name="last_menstrual_period">
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-4">
                     <label class="form-label">Previous pregnancies:</label>
                     <input class="form-control" id="number" type="number" name="number_of_previous_pregnancies">
@@ -212,7 +233,7 @@
                 <div class="row">
                     <div class="col-12">
                         <label class="form-label">Family history of medical conditions:</label>
-                        <input class="form-control" type="text" name="family_history_of_medical_condition"
+                        <input class="form-control" type="text" name="family_history_of_medical_conditions"
                             placeholder="like Diabetes and the like">
                     </div>
                 </div>
@@ -240,8 +261,7 @@
                 <div class="row">
                     <div class="col-4">
                         <label class="form-label">Member number:</label>
-                        <input class="form-control mt-2" type="text" name="member_number"
-                            placeholder="22-222-22">
+                        <input class="form-control mt-2" type="text" name="member_number" placeholder="22-222-22">
                     </div>
                     <div class="col-4">
                         <label class="form-label">Group number:</label>

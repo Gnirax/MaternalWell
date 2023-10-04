@@ -10,6 +10,8 @@ class Pregnancy extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['mothers_id', 'pregnancy_count', 'estimated_due_date', 'last_menstrual_period'];
+    
     public function mothers(){
        return $this->BelongsTo(Mothers::class);
     }

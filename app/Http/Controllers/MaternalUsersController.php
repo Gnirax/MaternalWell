@@ -104,6 +104,8 @@ class MaternalUsersController extends Controller
 
     public function update(Request $request, Maternal_users $id)
     {
+        $request->validated();
+
         $id->update([
             'firstname' => $request->firstname,
             'middlename' => $request->middlename,

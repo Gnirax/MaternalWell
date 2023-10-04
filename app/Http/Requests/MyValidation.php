@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class MyValidation extends FormRequest
 {
@@ -40,9 +41,9 @@ class MyValidation extends FormRequest
         ],
         'email' => [
             'sometimes',
-            'unique:maternal_users,email',
             'nullable',
             'email',
+            Rule::unique('maternal_users', 'email')->ignore($this->route('id')),
         ],
         'role' => [
             'sometimes',

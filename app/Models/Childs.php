@@ -19,8 +19,6 @@ class Childs extends Model
         'nationality',
         'region',
         'home_address',
-        'email',
-        'phone_number',
         'fathers_name',
         'fathers_email',
         'fathers_phone_number',

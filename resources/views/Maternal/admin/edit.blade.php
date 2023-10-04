@@ -1,6 +1,16 @@
 @extends('Maternal.layout')
 @section('content')
     @if (Auth::user()->role == 'Admin')
+        <div class="d-flex justify-content-end">
+            <a href={{ url()->previous() }}>
+                <button class="btn btn-primary" style="width:78px; height: 40px; margin-bottom: 10px;">
+                    <p style="font-size: 18px;">
+                        <i class="fas fa-angle-left"></i>
+                        Back
+                    </p>
+                </button>
+            </a>
+        </div>
         <div id="admin-edit" class="container shadow-lg p-3 mb-5 bg-body-tertiary rounded">
             <form action="{{ route('update', $users->id) }}" method="POST">
                 @csrf
@@ -47,11 +57,11 @@
                     <div class="col-6">
                         <div class="row">
                             <div class="col-3">
-                                <label>Address:</label>
+                                <label>Home address:</label>
                             </div>
                             <div class="col-9">
                                 <input class="form-control" type="text" name="address"
-                                    placeholder="District/Street/House No." value="{{ $users->address }}">
+                                    placeholder="District/Street/House No." value="{{ $users->home_address }}">
                             </div>
                         </div>
                     </div>

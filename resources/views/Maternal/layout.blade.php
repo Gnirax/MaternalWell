@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
 </head>
 
-<body id="body" class="hold-transition sidebar-mini layout-fixed bg-tertiary">
+<body id="body" class="hold-transition sidebar-mini layout-fixed bg-tertiary" style="position: absolute;">
     <div class="wrapper">
         <!-- Navbar -->
         @guest
@@ -196,14 +196,15 @@
                                         </p>
                                     </a>
                                     <ul class="nav nav-treeview">
-                                        <li><a class="nav-link {{ Request::routeIs('treatment.index.mothers') ? 'active' : '' }}"
+                                        <li class="nav-item"><a
+                                                class="nav-link {{ Request::routeIs('treatment.index.mothers') ? 'active' : '' }}"
                                                 href="{{ route('treatment.index.mothers') }}"><i
                                                     class="fas fa-female nav-icon"></i>
                                                 <p>Mothers</p>
                                             </a></li>
-                                        <li><a class="nav-link {{ Request::routeIs('treatment.index.childs') ? 'active' : '' }}"
-                                                href="{{ route('treatment.index.childs') }}"><i
-                                                    class="fas fa-child nav-icon"></i>
+                                        <li class="nav-item"><a
+                                                class="nav-link {{ Request::routeIs('treatment.index.childs') ? 'active' : '' }}"
+                                                href="{{ route('treatment.index.childs') }}"><i class="fas fa-child nav-icon"></i>
                                                 <p>Children</p>
                                             </a></li>
                                     </ul>
@@ -286,14 +287,15 @@
                                         </p>
                                     </a>
                                     <ul class="nav nav-treeview">
-                                        <li><a class="nav-link {{ Request::routeIs('treatment.index.mothers') ? 'active' : '' }}"
+                                        <li class="nav-item"><a
+                                                class="nav-link {{ Request::routeIs('treatment.index.mothers') ? 'active' : '' }}"
                                                 href="{{ route('treatment.index.mothers') }}"><i
                                                     class="fas fa-female nav-icon"></i>
                                                 <p>Mothers</p>
                                             </a></li>
-                                        <li><a class="nav-link {{ Request::routeIs('treatment.index.childs') ? 'active' : '' }}"
-                                                href="{{ route('treatment.index.childs') }}"><i
-                                                    class="fas fa-child nav-icon"></i>
+                                        <li class="nav-item"><a
+                                                class="nav-link {{ Request::routeIs('treatment.index.childs') ? 'active' : '' }}"
+                                                href="{{ route('treatment.index.childs') }}"><i class="fas fa-child nav-icon"></i>
                                                 <p>Children</p>
                                             </a></li>
                                     </ul>

@@ -1,5 +1,15 @@
 @extends('Maternal.layout')
 @section('content')
+    <div class="d-flex justify-content-end">
+        <a href={{ url()->previous() }}>
+            <button class="btn btn-primary" style="width:78px; height: 40px; margin-bottom: 10px;">
+                <p style="font-size: 18px;">
+                    <i class="fas fa-angle-left"></i>
+                    Back
+                </p>
+            </button>
+        </a>
+    </div>
     @if (Auth::user()->role == 'Admin')
         <div id="admin-register" class="container shadow-lg p-3 mb-5 bg-body-tertiary rounded">
             <form method="POST" action="{{ route('store') }}">
@@ -13,7 +23,7 @@
                         </ul>
                     </div>
                 @endif
-                <h2 style="text-align: center">CREATE USER</h2>
+                <h3 style="text-align: center">CREATE USER</h3>
                 <div class="row mb-2">
                     <div class="col-3">
                         <label>Full-Name:</label>
@@ -42,10 +52,10 @@
                     <div class="col-6">
                         <div class="row">
                             <div class="col-3">
-                                <label>Address:</label>
+                                <label>Home address:</label>
                             </div>
                             <div class="col-9">
-                                <input class="form-control" type="text" name="address"
+                                <input class="form-control" type="text" name="home_address"
                                     placeholder="District/Street/House No.">
                             </div>
                         </div>

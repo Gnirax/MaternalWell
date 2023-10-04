@@ -1,16 +1,27 @@
 @extends('Maternal.layout')
 @section('content')
     @if (Auth::user()->role == 'Admin')
+        <div class="d-flex justify-content-end">
+            <a href={{ url()->previous() }}>
+                <button class="btn btn-primary" style="width:78px; height: 40px; margin-bottom: 10px;">
+                    <p style="font-size: 18px;">
+                        <i class="fas fa-angle-left"></i>
+                        Back
+                    </p>
+                </button>
+            </a>
+        </div>
         <div id="admin-show" class="container shadow-lg p-3 mb-5 bg-body-tertiary rounded">
             <form>
                 @csrf
-                <h2 style="text-align: center"></h2>
+                <h3 style="text-align: center">{{ $users->firstname }}'s </h3>
                 <div class="row mb-2">
                     <div class="col-3">
                         <label>Full Name:</label>
                     </div>
                     <div class="col-9">
-                        <input class="form-control" value="{{ $users->firstname }} {{ $users->middlename }} {{ $users->surname }}" readonly>
+                        <input class="form-control"
+                            value="{{ $users->firstname }} {{ $users->middlename }} {{ $users->surname }}" readonly>
                     </div>
                 </div>
                 <div class="row mb-2">
@@ -30,7 +41,7 @@
                                 <label>Address:</label>
                             </div>
                             <div class="col-9">
-                                <input class="form-control" value="{{ $users->address }}" readonly>
+                                <input class="form-control" value="{{ $users->home_address }}" readonly>
                             </div>
                         </div>
                     </div>
@@ -106,7 +117,7 @@
                         <label>Password:</label>
                     </div>
                     <div class="col-10">
-                        <input class="form-control" value="{{ $users->password}}" readonly>
+                        <input class="form-control" value="{{ $users->password }}" readonly>
                     </div>
                 </div>
             </form>
