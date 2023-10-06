@@ -11,11 +11,17 @@ class Consultations extends Model
 
     protected $fillable=[
         'treatments_id',
+        'created_by',
         'nurses_id',
         'doctors_id',
         'mothers_id',
         'childs_id',
         'date',
+        'pressure',
+        'weight',
+        'height',
+        'BMI',
+        'ticket_number',
         'starting_time',
         'ending_time'
     ];

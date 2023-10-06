@@ -268,6 +268,15 @@
                                             </a></li>
                                     </ul>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('consultations.index') }}"
+                                        class="nav-link {{ Request::routeIs('consultations.index') ? 'active' : '' }}">
+                                        <i class="nav-icon fas fa-stethoscope"></i>
+                                        <p>
+                                            Consultations
+                                        </p>
+                                    </a>
+                                </li>
                             @elseif(Auth::user()->role == 'Doctor')
                                 <li class="nav-item">
                                     <a href="{{ route('consultations.index') }}"

@@ -13,16 +13,18 @@ return new class extends Migration
     {
         Schema::create('consultations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('treatments_id');
-            $table->unsignedBigInteger('nurses_id');
+            $table->unsignedBigInteger('treatments_id')->nullable();
+            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('nurses_id')->nullable();
             $table->unsignedBigInteger('doctors_id');
             $table->unsignedBigInteger('mothers_id')->nullable();
             $table->unsignedBigInteger('childs_id')->nullable();
             $table->date('date');
-            $table->string('pressure');
-            $table->string('weight');
-            $table->string('height');
-            $table->string('BMI');
+            $table->string('pressure')->nullable();
+            $table->string('weight')->nullable();
+            $table->string('height')->nullable();
+            $table->string('BMI')->nullable();
+            $table->string('ticket_number');
             $table->time('starting_time')->nullable();
             $table->time('ending_time')->nullable();
             $table->timestamps();

@@ -81,7 +81,7 @@ Route::controller(ConsultationsController::class)->group(function (){
     Route::post('/maternal/consultations/create/store','store')->name('consultations.store');
     Route::get('/maternal/consultations/show/{id}','show')->name('consultations.show');
     Route::get('/maternal/consultations/edit/{id}','edit')->name('consultations.edit');
-    Route::put('/maternal/consultations/edit/update/{id}','update')->name('consultaions.update');
+    Route::put('/maternal/consultations/edit/update/{id}','update')->name('consultations.update');
     Route::get('/maternal/consultations/delete/{id}','delete')->name('consultations.delete');
 });
 
