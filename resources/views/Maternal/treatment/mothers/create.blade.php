@@ -1,66 +1,160 @@
 @extends('Maternal.layout')
 @section('content')
-    <div id="mySidenav" class="sidenav">
-        <a id="a" data-toggle="tab" href="#observations"><i class="fas fa-eye"></i>OBSERVATIONS</a>
-    <a id="b" data-toggle="tab" href="#hypothesis"><i class="fas fa-lightbulb"></i>HYPOTHESIS</a>
-    <a id="c" data-toggle="tab" href="#diagnostic_tests"><i class="fas fa-flask"></i>DIAGNOSTIC TESTS</a>
-    <a id="d" data-toggle="tab" href="#diagnostic_results"><i class="fas fa-chart-line"></i>DIAGNOSTIC RESULTS</a>
-    <a id="e" data-toggle="tab" href="#diagnosis"><i class="fas fa-stethoscope"></i>DIAGNOSIS</a>
-    <a id="f" data-toggle="tab" href="#medications"><i class="fas fa-medkit"></i>MEDICATIONS</a>
-    <a id="g" data-toggle="tab" href="#treatment_plan"><i class="fas fa-list-ul"></i>TREATMENT PLAN</a>
-    </div>
-    <div id="treatment" class="container card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+    <div id="treatment" class="container card shadow-lg bg-body-tertiary rounded">
         <form method="POST" action="{{ route('treatment.store') }}">
             @csrf
-            <div class="tab-content">
-                <div id="observations" class="tab-pane fade">
-                    <div class="form-group">
-                        <input type="hidden" name="consultations_id" value="{{ $consultations->id }}">
-                        <input type="hidden" name="type" value="mothers">
-                        <input type="hidden" name="mothers_id" value="{{ $consultations->mothers_id }}">
-                        <label class="form-label">OBSERVATIONS:</label>
-                        <textarea name="observations" class="form-control"></textarea>
+            <h3 style="text-align: center;">TREATMENT FORM</h3>
+            {{-- Some more info --}}
+            <div>
+                <input type="hidden" name="consultations_id" value="{{ $consultations->id }}">
+                <input type="hidden" name="type" value="mothers">
+                <input type="hidden" name="mothers_id" value="{{ $consultations->mothers_id }}">
+            </div>
+            <div class="tab">
+                <div class="row">
+                    <div class="row">
+                        <div class="col-4"></div>
+                        <div class="col-4">
+                            <label class="form-label">OBSERVATIONS:</label>
+                        </div>
+                        <div class="col-4"></div>
                     </div>
-                </div>
-                <div id="hypothesis" class="tab-pane fade">
-                    <div class="form-group">
-                        <label class="form-label">HYPOTHESIS:</label>
-                        <textarea class="form-control" name="hypothesis"></textarea>
-                    </div>
-                </div>
-                <div id="diagnostic_tests" class="tab-pane fade">
-                    <div class="form-group">
-                        <label class="form-label">DIAGNOSTIC TESTS:</label>
-                        <textarea class="form-control" name="diagnostic_tests"></textarea>
-                    </div>
-                </div>
-                <div id="diagnostic_results" class="tab-pane fade">
-                    <div class="form-group">
-                        <label class="form-label">DIAGNOSTIC RESULTS:</label>
-                        <textarea class="form-control" name="diagnostics_results"></textarea>
-                    </div>
-                </div>
-                <div id="diagnosis" class="tab-pane fade">
-                    <div class="form-group">
-                        <label class="form-label">DIAGNOSIS:</label>
-                        <textarea class="form-control" name="diagnosis"></textarea>
-                    </div>
-                </div>
-                <div id="medications" class="tab-pane fade">
-                    <div class="form-group">
-                        <label class="form-label">MEDICATIONS:</label>
-                        <textarea class="form-control" name="medications"></textarea>
-                    </div>
-                </div>
-                <div id="treatment_plan" class="tab-pane fade">
-                    <div class="form-group">
-                        <label class="form-label">TREATMENT PLAN</label>
-                        <textarea class="form-control" name="treatment_plan"></textarea>
+                    <div class="row">
+                        <div class="col-1"></div>
+                        <div class="col-10">
+                            <textarea name="observations" class="form-control"></textarea>
+                        </div>
+                        <div class="col-1"></div>
                     </div>
                 </div>
             </div>
-            <div class="row d-flex justify-content-center">
-                <button class="btn btn-outline-success btn-sm mb-3" type="submit">SAVE</button>
+            <div class="tab">
+                <div class="row">
+                    <div class="row">
+                        <div class="col-4"></div>
+                        <div class="col-4">
+                        <label class="form-label">HYPOTHESIS:</label>
+                        </div>
+                        <div class="col-4"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1"></div>
+                        <div class="col-10">
+                        <textarea class="form-control" name="hypothesis"></textarea>
+                        </div>
+                        <div class="col-1"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab">
+                <div class="row">
+                    <div class="row">
+                        <div class="col-4"></div>
+                        <div class="col-4">
+                        <label class="form-label">DIAGNOSTIC TESTS:</label>
+                        </div>
+                        <div class="col-4"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1"></div>
+                        <div class="col-10">
+                        <textarea class="form-control" name="diagnostic_tests"></textarea>
+                        </div>
+                        <div class="col-1"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab">
+                <div class="row">
+                    <div class="row">
+                        <div class="col-4"></div>
+                        <div class="col-4">
+                        <label class="form-label">DIAGNOSTIC RESULTS:</label>
+                        </div>
+                        <div class="col-4"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1"></div>
+                        <div class="col-10">
+                        <textarea class="form-control" name="diagnostics_results"></textarea>
+                        </div>
+                        <div class="col-1"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab">
+                <div class="row">
+                    <div class="row">
+                        <div class="col-4"></div>
+                        <div class="col-4">
+                        <label class="form-label">DIAGNOSIS:</label>
+                    </div>
+                    <div class="col-4"></div>
+                    </div>
+                    <div class="row">
+                       <div class="col-1"></div>
+                       <div class="col-10">
+                       <textarea class="form-control" name="diagnosis"></textarea>
+                       </div>
+                       <div class="col-1"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab">
+                <div class="row">
+                    <div class="row">
+                        <div class="col-4"></div>
+                        <div class="col-4">
+                        <label class="form-label">MEDICATIONS:</label>
+                        </div>
+                        <div class="col-4"></div>
+                    </div>
+                    <div class="row">
+                       <div class="col-1"></div>
+                       <div class="col-10">
+                       <textarea class="form-control" name="medications"></textarea>
+                       </div>
+                       <div class="col-1"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab">
+                <div class="row">
+                    <div class="row">
+                        <div class="col-4"></div>
+                        <div class="col-4">
+                            <label class="form-label">TREATMENT PLAN</label>
+                        </div>
+                        <div class="col-4"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1"></div>
+                        <div class="col-10">
+                            <textarea class="form-control" name="treatment_plan"></textarea>
+                        </div>
+                        <div class="col-1"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3" style="overflow: auto;">
+                    <div class="col-3">
+                        <div class="d-flex justify-content-start">
+                            <button id="prev" class="btn btn-outline-primary" onclick="nP(-1)">Previous</button>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div style="text-align:center;margin-top:40px;">
+                            <span class="step"></span>
+                            <span class="step"></span>
+                            <span class="step"></span>
+                            <span class="step"></span>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="d-flex justify-content-end">
+                            <button id="next" class="btn btn-outline-primary" onclick="nP(1)">Next</button>
+                        </div>
+                    </div>
             </div>
         </form>
     </div>

@@ -39,6 +39,10 @@
 #child_index{
     width: 1000px;
 }
+#treatment{
+    width: auto;
+    height: auto;
+}
 
 #consultation{
     width: 500px;
@@ -68,7 +72,7 @@
     text-decoration: underline !important;
 }
 
-#mySidenav{
+/* #mySidenav{
     display: inline-block;
 }
 #mySidenav a {
@@ -132,10 +136,11 @@
 #g {
     top: 460px;
     background-color: #2196F3;
-}
+} */
+
 textarea{
-    width: 650px !important;
-    height: 300px !important;
+    width: auto !important;
+    height: auto !important;
 }
 ul{
     list-style: none;
