@@ -50,6 +50,12 @@
                     </li>
                 </ul>
 
+                <div class="row">
+                    <input style="font-family: cursive; margin-left:385px; width: 95px;
+                     border: none; color:#828486" id="timeInput" name="starting_time"
+                        readonly>
+                </div>
+
                 <!-- Right navbar links -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Navbar Search -->
@@ -99,6 +105,13 @@
                     </li>
                 </ul>
 
+                {{-- TIME --}}
+                <div class="row">
+                    <input style="font-family: cursive; margin-left:385px; width: 95px;
+                     border: none; color:#828486" id="timeInput" name="starting_time"
+                        readonly>
+                </div>
+
                 <!-- Right navbar links -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Navbar Search -->
@@ -134,11 +147,11 @@
                                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                                     <div class="image">
                                         @if (Auth::user()->sex == 'Female')
-                                        <img src="{{ asset('img/avatar2.png') }}" class="img-circle elevation-2"
-                                            alt="User Image">
+                                            <img src="{{ asset('img/avatar2.png') }}" class="img-circle elevation-2"
+                                                alt="User Image">
                                         @else
-                                        <img src="{{ asset('img/avatar.png') }}" class="img-circle elevation-2"
-                                            alt="User Image">
+                                            <img src="{{ asset('img/avatar.png') }}" class="img-circle elevation-2"
+                                                alt="User Image">
                                         @endif
                                     </div>
                                     <div class="info">
@@ -204,7 +217,8 @@
                                             </a></li>
                                         <li class="nav-item"><a
                                                 class="nav-link {{ Request::routeIs('treatment.index.childs') ? 'active' : '' }}"
-                                                href="{{ route('treatment.index.childs') }}"><i class="fas fa-child nav-icon"></i>
+                                                href="{{ route('treatment.index.childs') }}"><i
+                                                    class="fas fa-child nav-icon"></i>
                                                 <p>Children</p>
                                             </a></li>
                                     </ul>
@@ -304,7 +318,8 @@
                                             </a></li>
                                         <li class="nav-item"><a
                                                 class="nav-link {{ Request::routeIs('treatment.index.childs') ? 'active' : '' }}"
-                                                href="{{ route('treatment.index.childs') }}"><i class="fas fa-child nav-icon"></i>
+                                                href="{{ route('treatment.index.childs') }}"><i
+                                                    class="fas fa-child nav-icon"></i>
                                                 <p>Children</p>
                                             </a></li>
                                     </ul>
@@ -357,11 +372,11 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-        {{-- style="background-image: {{ asset('img/third.jpg') }};
+            {{-- style="background-image: {{ asset('img/third.jpg') }};
     filter:blur(8px);
     -webkit-filter:blur(8px);
     background-position: center;
-    background-size:cover;"--}}
+    background-size:cover;" --}}
             <!-- Main content -->
             @if (Auth::user())
                 @yield('content')
@@ -375,7 +390,7 @@
         <!-- /.content-wrapper -->
     </div>
     <!-- ./wrapper -->
-    <script src="{{ asset('myjs.js')}}"></script>
+    <script src="{{ asset('myjs.js') }}"></script>
     <!-- jQuery -->
     <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
     <!-- jQuery UI 1.11.4 -->
@@ -383,6 +398,18 @@
         < /scrip> <!--Resolve conflict in jQuery UI tooltip with Bootstrap tooltip-- > <
         script >
             $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    <script>
+        function updateTime() {
+            const currentTime = new Date();
+            const hours = currentTime.getHours().toString().padStart(2, '0');
+            const minutes = currentTime.getMinutes().toString().padStart(2, '0');
+            const seconds = currentTime.getSeconds().toString().padStart(2, '0');
+            const formattedTime = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('timeInput').value = formattedTime;
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
     </script>
     <script src="{{ asset('bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js') }}"></script>
     <!-- Bootstrap 4 -->

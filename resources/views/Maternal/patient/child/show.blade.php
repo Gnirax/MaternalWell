@@ -21,7 +21,7 @@
                     <li class="nav-item"
                         style="margin-bottom: -15px;
                         margin-left: -10px; margin-right: -10px;">
-                        <a class="nav-link" href="{{ route('consultations.create.mother', $childs->id) }}">
+                        <a class="nav-link" href="{{ route('consultations.create.child', $childs->id) }}">
                             <p style="text-align: center">New Consultation</p>
                         </a>
                     </li>
@@ -158,7 +158,7 @@
                                                 </div>
                                                 <div class="col-9">
                                                     <input class="form-control form-control-sm"
-                                                        value="{{ $mothers->firstname.''.$mothers->surname }}" readonly>
+                                                        value="{{ $mothers->firstname . '' . $mothers->surname }}" readonly>
                                                 </div>
                                             </div>
                                         </div>

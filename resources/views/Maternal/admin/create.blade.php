@@ -103,7 +103,6 @@
                                 <select name="role" class="form-control form-select form-select-sm">
                                     <option value="Doctor">Doctor</option>
                                     <option value="Nurse">Nurse</option>
-                                    <option value="Patient">Patient</option>
                                     <option value="Admin">Admin</option>
                                 </select>
                             </div>

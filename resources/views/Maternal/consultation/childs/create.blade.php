@@ -39,10 +39,20 @@
             <div class="row mt-3">
                 <div class="col-5"></div>
                 <div class="col-2">
-                    <button class="btn btn-outline-success btn-sm d-flex justify-content-center" type="submit">CREATE</button>
+                    <button class="btn btn-outline-success btn-sm d-flex justify-content-center"
+                        type="submit">CREATE</button>
                 </div>
                 <div class="col-5"></div>
             </div>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         </form>
     </div>
 @endsection

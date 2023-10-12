@@ -88,8 +88,8 @@ Route::controller(ConsultationsController::class)->group(function (){
 Route::controller(TreatmentsController::class)->group(function (){
     Route::get('/maternal/treatment/index/mothers','mothers_index')->name('treatment.index.mothers');
     Route::get('/maternal/treatment/index/childs','childs_index')->name('treatment.index.childs');
-    Route::get('/maternal/treatment/create/mothers/{id}','mothers_create')->name('treatment.create.mothers');
-    Route::get('/maternal/treatment/create/childs/{id}','childs_create')->name('treatment.create.childs');
+    Route::put('/maternal/treatment/create/mothers/{id}','mothers_create')->name('treatment.create.mothers');
+    Route::put('/maternal/treatment/create/childs/{id}','childs_create')->name('treatment.create.childs');
     Route::post('/maternal/treatment/create/store','store')->name('treatment.store');
     Route::get('/maternal/treatment/show/{id}','show')->name('treatment.show');
     Route::get('/maternal/treatment/edit/{id}','edit')->name('treatment.edit');

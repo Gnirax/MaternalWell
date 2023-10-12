@@ -1,54 +1,63 @@
 @extends('Maternal.layout')
 @section('content')
-    <div id="consultation" class="container card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
-        <form class="row">
-            <h2 style="text-align: center"></h2>
-            <div class="row">
-                <div class="col-6">
-                    <label class="form-label">Nurse:</label>
-                    <input class="form-control" name="date"
-                        value="{{ $consultations->firstname}} {{ $consultations->surname}}"
-                        readonly>
+    <div class="d-flex justify-content-end">
+        <a href={{ url()->previous() }}>
+            <button class="btn btn-primary" style="width:78px; height: 40px; margin-bottom: 10px;">
+                <p style="font-size: 18px;">
+                    <i class="fas fa-angle-left"></i>
+                    Back
+                </p>
+            </button>
+        </a>
+    </div>
+    <div id="consultation_show" class="container card shadow-lg bg-body-tertiary rounded">
+        <form class="row" method="POST" action="{{ route('treatment.create.childs', $consultations->id) }}">
+            @csrf
+            @method('PUT')
+            <h2 style="text-align: center" class="mb-4 mt-2">{{ $childs->firstname }}'s CONSULTATION</h2>
+            <div class="row mb-4 mt-3">
+                <div class="col-1"></div>
+                <div class="col-2">
+                    <label class="form-label mt-2">Name:</label>
                 </div>
-                <div class="col-6">
-                    <label class="form-label">Child:</label>
-                    <input class="form-control" name="date" value="{{ $childs->firstname }}" readonly>
+                <div class="col-8">
+                    <input class="form-control" value="{{ $childs->firstname }} {{ $childs->surname }}" readonly>
                 </div>
+                <div class="col-1"></div>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <label class="form-label">Date:</label>
-                    <input class="form-control" name="date" value="{{ $consultations->date }}" readonly>
+            <div class="row mb-4 mt-3">
+                <div class="col-1"></div>
+                <div class="col-2">
+                    <label class="form-label mt-2">Date:</label>
                 </div>
+                <div class="col-8">
+                    <input type="date" class="form-control" name="date" value="{{ $consultations->date }}" readonly>
+                </div>
+                <div class="col-1"></div>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <label class="form-label">Doctor:</label>
-                    <input class="form-control" name="doctors_id"
-                        value="{{ $doctors->firstname }} {{ $doctors->surname }}"
-                        readonly>
+            <div class="row mt-2">
+                <div class="col-4"></div>
+                <div class="col-4">
+                    <button class="btn btn-outline-primary btn-sm d-flex justify-content-center" type="submit">
+                        Start Treatment
+                        &rarr;
+                    </button>
+                    {{-- For time to work --}}
+                    <input id="timeInput1" name="starting_time" type="hidden" readonly>
+                    <script>
+                        function updateTime1() {
+                            const currentTime = new Date();
+                            const hours = currentTime.getHours().toString().padStart(2, '0');
+                            const minutes = currentTime.getMinutes().toString().padStart(2, '0');
+                            const seconds = currentTime.getSeconds().toString().padStart(2, '0');
+                            const formattedTime = `${hours}:${minutes}:${seconds}`;
+                            document.getElementById('timeInput1').value = formattedTime;
+                        }
+                        updateTime1();
+                        setInterval(updateTime1, 1000);
+                    </script>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-6">
-                    <label class="form-label">Starts:</label><br>
-                    <input class="form-control" name="starting_time" placeholder="Starting time"
-                        value="{{ $consultations->starting_time }}" readonly>
-                </div>
-                <div class="col-6">
-                    <label class="form-label">Ends:</label><br>
-                    <input class="form-control" name="ending_time" placeholder="Ending time"
-                        value="{{ $consultations->ending_time }}" readonly>
-                </div>
-            </div>
-            <div class="row justify-content-around">
-                <a href="{{ route('childs.history', $consultations->childs_id) }}">See
-                    History &rarr;</a>
-                @if (Auth::user()->role == 'Doctor' || Auth::user()->role == 'Admin')
-                    <a href="{{ route('treatment.create.childs', $consultations->childs_id) }}">Start
-                        Treatment
-                        &rarr;</a>
-                @endif
+                <div class="col-4"></div>
             </div>
         </form>
     </div>

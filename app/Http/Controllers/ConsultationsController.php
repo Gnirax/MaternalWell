@@ -21,39 +21,28 @@ class ConsultationsController extends Controller
         $consultations = Consultations::all();
 
         $now = Carbon::now();
-        $pastconsultations = Consultations::where('date', '<', $now->toDateString())->orderBy('starting_time', 'desc')->get();
-        $todayconsultations = Consultations::whereDate('date', $now->toDateString())->orderBy('starting_time', 'asc')->get();
-        $appointments = Consultations::where('date', '>', $now)->orderBy('starting_time', 'asc')->get();
 
-        foreach ($pastconsultations as $pastconsultation) {
-            if ($pastconsultation->mothers_id != null) {
-                $pastconsultation->associated = Mothers::where('id', $pastconsultation->mothers_id)->value('firstname') . " " . Mothers::where('id', $pastconsultation->mothers_id)->value('surname');
-            } elseif ($pastconsultation->childs_id != null) {
-                $pastconsultation->associated = Childs::where('id', $pastconsultation->childs_id)->value('firstname') . " " . Childs::where('id', $pastconsultation->childs_id)->value('surname');
+        $consultations->map(function ($consultation) {
+            if ($consultation->mothers_id != null) {
+                $consultation->associated = Mothers::where('id', $consultation->mothers_id)->value('firstname') . " " . Mothers::where('id', $consultation->mothers_id)->value('surname');
+            } elseif ($consultation->childs_id != null) {
+                $consultation->associated = Childs::where('id', $consultation->childs_id)->value('firstname') . " " . Childs::where('id', $consultation->childs_id)->value('surname');
             } else {
-                $pastconsultation->associated = 'unknown';
+                $consultation->associated = 'unknown';
             }
-        }
+        });
 
-        foreach ($todayconsultations as $todayconsultation) {
-            if ($todayconsultation->mothers_id != null) {
-                $todayconsultation->associated = Mothers::where('id', $todayconsultation->mothers_id)->value('firstname') . " " . Mothers::where('id', $todayconsultation->mothers_id)->value('surname');
-            } elseif ($todayconsultation->childs_id != null) {
-                $todayconsultation->associated = Childs::where('id', $todayconsultation->childs_id)->value('firstname') . " " . Childs::where('id', $todayconsultation->childs_id)->value('surname');
-            } else {
-                $todayconsultation->associated = 'unknown';
-            }
-        }
+        $pastconsultations = $consultations->filter(function ($consultation) use ($now) {
+            return $consultation->date < $now->toDateString();
+        })->sortByDesc('starting_time');
 
-        foreach ($appointments as $appointment) {
-            if ($appointment->mothers_id != null) {
-                $appointment->associated = Mothers::where('id', $appointment->mothers_id)->value('firstname') . " " . Mothers::where('id', $appointment->mothers_id)->value('surname');
-            } elseif ($appointment->childs_id != null) {
-                $appointment->associated = Childs::where('id', $appointment->childs_id)->value('firstname') . " " . Childs::where('id', $appointment->childs_id)->value('surname');
-            } else {
-                $appointment->associated = 'unknown';
-            }
-        }
+        $todayconsultations = $consultations->filter(function ($consultation) use ($now) {
+            return $consultation->date == $now->toDateString();
+        })->sortBy('starting_time');
+
+        $appointments = $consultations->filter(function ($consultation) use ($now) {
+            return $consultation->date > $now->toDateString();
+        })->sortBy('starting_time');
 
         return view('Maternal.consultation.index', compact(
             'consultations',
@@ -93,10 +82,22 @@ class ConsultationsController extends Controller
     public function store(MyValidation $request)
     {
         $now = Carbon::now();
-        $no_of_todays_consultations = Consultations::where('date', '==', $now->toDateString())->count();
-        $ticket_number = $no_of_todays_consultations + 1;
+        $today = $now->toDateString();
 
-        $doctor_id = Doctors::where('users_id', $request->input('doctors_id'))->value('id');
+        $request->validate([
+            'date' => 'required|date|after_or_equal:today',
+            'doctors_id' => 'required'
+        ]);
+
+        if ($request->date == $today) {
+            $dateToCheck = $today;
+        } elseif ($request->date > $today) {
+            $dateToCheck = $request->date;
+        }
+
+        $no_of_consultations = Consultations::where('date', '=', $dateToCheck)->count();
+        $ticket_number = $no_of_consultations + 1;
+        $doctor_id = Doctors::where('users_id', $request->doctors_id)->value('id');
 
         $users_id = Auth::user()->id;
         if (Auth::user()->role == "Nurse") {
@@ -150,35 +151,16 @@ class ConsultationsController extends Controller
         }
     }
 
-    public function show($id)
+    public function show(Consultations $id)
     {
-        $mothers_consultations = Consultations::where('id', $id)->value('mothers_id');
-        $childs_consultations = Consultations::where('id', $id)->value('childs_id');
-
-        if ($mothers_consultations != null) {
-            $consultations = Consultations::where('consultations.id', $id)
-                ->join('nurses', 'nurses.id', '=', 'nurses_id')
-                ->join('maternal_users', 'maternal_users.id', '=', 'users_id')
-                ->select('consultations.*', 'nurses.*', 'maternal_users.*')
-                ->first();
+        if ($id->mothers_id != null) {
+            $consultations = $id;
             $mothers = Mothers::where('mothers.id', $consultations->mothers_id)->first();
-            $doctors = Doctors::where('doctors.id', $consultations->doctors_id)
-                ->join('maternal_users', 'maternal_users.id', '=', 'users_id')
-                ->select('doctors.*', 'maternal_users.*')
-                ->first();
-            return view('Maternal.consultation.mothers.show', compact('consultations', 'mothers', 'doctors'));
-        } elseif ($childs_consultations != null) {
-            $consultations = DB::table('consultations')->where('consultations.id', $id)
-                ->join('nurses', 'nurses.id', '=', 'nurses_id')
-                ->join('maternal_users', 'maternal_users.id', '=', 'users_id')
-                ->select('consultations.*', 'nurses.*', 'maternal_users.*')
-                ->first();
+            return view('Maternal.consultation.mothers.show', compact('consultations', 'mothers'));
+        } elseif ($id->childs_id != null) {
+            $consultations = $id;
             $childs = Childs::where('childs.id', $consultations->childs_id)->first();
-            $doctors = Doctors::where('doctors.id', $consultations->doctors_id)
-                ->join('maternal_users', 'maternal_users.id', '=', 'users_id')
-                ->select('doctors.*', 'maternal_users.*')
-                ->first();
-            return view('Maternal.consultation.childs.show', compact('consultations', 'childs', 'doctors'));
+            return view('Maternal.consultation.childs.show', compact('consultations', 'childs'));
         } else {
             return 'unknown';
         }
@@ -194,6 +176,7 @@ class ConsultationsController extends Controller
         // }
 
     }
+
     public function edit(Consultations $id)
     {
         $consultations = $id;
@@ -216,8 +199,8 @@ class ConsultationsController extends Controller
 
     public function update(MyValidation $request, Consultations $id)
     {
-        $BMI = number_format(($request->weight) / (($request->height) ^ 2),3);
-        $pressure = $request->systolic.'/'.$request->diastolic ;
+        $BMI = number_format(($request->weight) / (($request->height) ^ 2), 3);
+        $pressure = $request->systolic . '/' . $request->diastolic;
         $request->validated();
 
         if (Auth::user()->role == "Nurse") {

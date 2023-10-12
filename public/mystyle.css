@@ -46,6 +46,12 @@
 
 }
 
+#consultation_show{
+    width: 480px;
+    height: 320px;
+
+}
+
 #consultation_edit{
     width: 580px;
     height: 350px;
@@ -139,7 +145,7 @@ body{
 }
 
 tr{
-    color:#606b75;
+    color:#828486;
 }
 
 tr:hover{

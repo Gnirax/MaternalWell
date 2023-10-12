@@ -71,8 +71,16 @@ class ChildsController extends Controller
     {
         $childs = $id;
         $mothers = Mothers::where('mothers.id', $id->mothers_id)->first();
-        $consultations = Consultations::where('childs_id', $id->id)->orderBy('created_at', 'desc')->first();
-        return view('Maternal.patient.child.show', compact('childs', 'mothers', 'consultations'));
+        $consultations = DB::table('consultations')
+            ->where('childs_id', $id->id)
+            ->whereNotNull('BMI')
+            ->orderBy('created_at', 'desc')
+            ->first();
+        return view('Maternal.patient.child.show', compact(
+            'childs',
+            'mothers',
+            'consultations'
+        ));
     }
 
     public function edit(Childs $id)
@@ -125,47 +133,47 @@ class ChildsController extends Controller
         return redirect()->route('childs.index');
     }
 
-    public function history($childs_id)
-    {
-        $treatments = Treatments::findOrFail($childs_id);
+    // public function history($childs_id)
+    // {
+    //     $treatments = Treatments::findOrFail($childs_id);
 
-        return view('Maternal.treatment.childs.history', compact('treatments'));
-    }
+    //     return view('Maternal.treatment.childs.history', compact('treatments'));
+    // }
 
-    public function consultation_index()
-    {
-        $treatments = Treatments::all();
-        $mothers_user_id = Auth::user()->id;
-        $mothers = Mothers::where('users_id', $mothers_user_id)->first();
-        $childs = Childs::where('mothers_id', $mothers->id);
+    // public function consultation_index()
+    // {
+    //     $treatments = Treatments::all();
+    //     $mothers_user_id = Auth::user()->id;
+    //     $mothers = Mothers::where('users_id', $mothers_user_id)->first();
+    //     $childs = Childs::where('mothers_id', $mothers->id);
 
-        $now = Carbon::now();
-        $week = $now->copy()->subDay(7);
-        $recentconsultations = DB::table('consultations')
-            ->where('childs_id', $childs->id)
-            ->where('date', '>=', $week)
-            ->orderBy('starting_time', 'desc')
-            ->get();
-        $pastconsultations = DB::table('consultations')
-            ->where('childs_id', $childs->id)
-            ->where('date', '<', $week)
-            ->orderBy('starting_time', 'desc')
-            ->get();
-        return view(
-            'Maternal.Patient-user.children.consultation.index',
-            compact(
-                'childs',
-                'recentconsultations',
-                'pastconsultations',
-                'treatments'
-            )
-        );
-    }
+    //     $now = Carbon::now();
+    //     $week = $now->copy()->subDay(7);
+    //     $recentconsultations = DB::table('consultations')
+    //         ->where('childs_id', $childs->id)
+    //         ->where('date', '>=', $week)
+    //         ->orderBy('starting_time', 'desc')
+    //         ->get();
+    //     $pastconsultations = DB::table('consultations')
+    //         ->where('childs_id', $childs->id)
+    //         ->where('date', '<', $week)
+    //         ->orderBy('starting_time', 'desc')
+    //         ->get();
+    //     return view(
+    //         'Maternal.Patient-user.children.consultation.index',
+    //         compact(
+    //             'childs',
+    //             'recentconsultations',
+    //             'pastconsultations',
+    //             'treatments'
+    //         )
+    //     );
+    // }
 
-    public function see_treatments($id)
-    {
-        $treatments = Treatments::where('consultations_id', $id)->first();
+    // public function see_treatments($id)
+    // {
+    //     $treatments = Treatments::where('consultations_id', $id)->first();
 
-        return view('Maternal.Patient-user.consultation.show', compact('treatments'));
-    }
+    //     return view('Maternal.Patient-user.consultation.show', compact('treatments'));
+    // }
 }

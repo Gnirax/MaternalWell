@@ -40,11 +40,15 @@ class TreatmentsController extends Controller
             ->orWhereNotNull('treatment_plan')
             ->orderBy('updated_at', 'desc')->get();
 
-        return view('Maternal.treatment.mothers.index',
-        compact( 'pasttreatments',
-        'todaytreatments',
-        'ongoingtreatments',
-        'finishedtreatments'));
+        return view(
+            'Maternal.treatment.mothers.index',
+            compact(
+                'pasttreatments',
+                'todaytreatments',
+                'ongoingtreatments',
+                'finishedtreatments'
+            )
+        );
     }
 
     public function childs_index()
@@ -74,24 +78,32 @@ class TreatmentsController extends Controller
             ->orWhereNotNull('treatment_plan')
             ->orderBy('updated_at', 'desc')->get();
 
-        return view('Maternal.treatment.childs.index',
-        compact( 'pasttreatments',
-        'todaytreatments',
-        'ongoingtreatments',
-        'finishedtreatments'));
-
-
+        return view(
+            'Maternal.treatment.childs.index',
+            compact(
+                'pasttreatments',
+                'todaytreatments',
+                'ongoingtreatments',
+                'finishedtreatments'
+            )
+        );
     }
 
-    public function mothers_create($mothers_id)
+    public function mothers_create(Request $request, Consultations $id)
     {
-        $consultations = Consultations::where('mothers_id', $mothers_id)->first();
+        $consultations = Consultations::where('mothers_id', $id->mothers_id)->first();
+        $consultations->update([
+            'starting_time' => $request->starting_time
+        ]);
         return view('Maternal.treatment.mothers.create', compact('consultations'));
     }
 
-    public function childs_create($childs_id)
+    public function childs_create(Request $request, Consultations $id)
     {
-        $consultations = Consultations::where('childs_id', $childs_id)->first();
+        $consultations = Consultations::where('childs_id', $id->childs_id)->first();
+        $consultations->update([
+            'starting_time' => $request->starting_time
+        ]);
         return view('Maternal.treatment.childs.create', compact('consultations'));
     }
 
@@ -135,12 +147,13 @@ class TreatmentsController extends Controller
         }
     }
 
-    public function show($id){
-        $treatments = Treatments::where('treatments.id', $id )->first();
+    public function show($id)
+    {
+        $treatments = Treatments::where('treatments.id', $id)->first();
 
-        if($treatments->mothers_id != null){
+        if ($treatments->mothers_id != null) {
             return view('Maternal.treatment.mothers.show', compact('treatments'));
-        } elseif ($treatments->childs_id != null){
+        } elseif ($treatments->childs_id != null) {
             return view('Maternal.treatment.childs.show', compact('treatments'));
         } else {
             return "No record";

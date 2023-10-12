@@ -38,7 +38,7 @@
                     <div class="col-6">
                         <div class="row">
                             <div class="col-3">
-                                <label>Address:</label>
+                                <label>Home address:</label>
                             </div>
                             <div class="col-9">
                                 <input class="form-control" value="{{ $users->home_address }}" readonly>

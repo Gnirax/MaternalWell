@@ -1,5 +1,15 @@
 @extends('Maternal.layout')
 @section('content')
+    <div class="d-flex justify-content-end">
+        <a href={{ url()->previous() }}>
+            <button class="btn btn-primary" style="width:78px; height: 40px; margin-bottom: 10px;">
+                <p style="font-size: 18px;">
+                    <i class="fas fa-angle-left"></i>
+                    Back
+                </p>
+            </button>
+        </a>
+    </div>
     <div id="consultation_edit" class="container card shadow-lg bg-body-tertiary rounded mb-4 mt-4">
         <form class="row" method="POST" action="{{ route('consultations.update', $consultations->id) }}">
             @csrf
@@ -13,8 +23,8 @@
                                 <label class="form-label mt-2">Date:</label>
                             </div>
                             <div class="col-9">
-                                <input type="date" class="form-control" name="date"
-                                    value="{{ $consultations->date }}" readonly>
+                                <input type="date" class="form-control" name="date" value="{{ $consultations->date }}"
+                                    readonly>
                             </div>
                         </div>
                     </div>

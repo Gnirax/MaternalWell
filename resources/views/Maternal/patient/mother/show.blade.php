@@ -18,7 +18,8 @@
                     ACTIONS
                 </button>
                 <ul class="dropdown-menu">
-                    <li class="nav-item" style="margin-bottom: -15px;
+                    <li class="nav-item"
+                        style="margin-bottom: -15px;
                         margin-left: -10px; margin-right: -10px;">
                         <a class="nav-link" href="{{ route('consultations.create.mother', $mothers->id) }}">
                             <p style="text-align: center">New Consultation</p>
@@ -78,7 +79,7 @@
                     <form>
                         @csrf
                         <ul class="nav nav-tabs justify-content-start mb-2">
-                            <li class="nav-item"><a class="nav-link axtive" data-toggle="tab" href="#personnel">
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#personnel">
                                     <label class="form-label">
                                         <h5>Personnel Details</h5>
                                     </label>
@@ -112,7 +113,7 @@
                                 </a></li>
                         </ul>
                         <div class="tab-content">
-                            <div id="personnel" class="tab-pane fade" >
+                            <div id="personnel" class="tab-pane fade">
                                 <div class="row mb-2 mt-2">
                                     <div class="row mb-2">
                                         <div class="col-3">
@@ -226,7 +227,7 @@
                             <div id="husband" class="tab-pane fade">
                                 <div class="row mb-2 mt-2">
                                     <div class="row mb-2">
-                                        <div class="col-5">
+                                        <div class="col-6">
                                             <div class="row mb-2">
                                                 <div class="col-3">
                                                     <label>Name:</label>
@@ -250,7 +251,7 @@
                                         </div>
                                     </div>
                                     <div class="row mb-2">
-                                        <div class="col-5">
+                                        <div class="col-6">
                                             <div class="row mb-2">
                                                 <div class="col-3">
                                                     <label>Region:</label>
@@ -274,7 +275,7 @@
                                         </div>
                                     </div>
                                     <div class="row mb-2">
-                                        <div class="col-5">
+                                        <div class="col-6">
                                             <div class="row mb-2">
                                                 <div class="col-3">
                                                     <label>Email:</label>
@@ -359,7 +360,7 @@
                                                 <div class="col-5">
                                                     <label>Due date:</label>
                                                 </div>
-                                                <div class="col-6">
+                                                <div class="col-7">
                                                     <input class="form-control form-control-sm"
                                                         value="{{ $pregnancy->estimated_due_date }}" readonly>
                                                 </div>
@@ -380,7 +381,7 @@
                                     <div class="row mb-2">
                                         <div class="col-4">
                                             <div class="row mb-2">
-                                                <div class="col-8">
+                                                <div class="col-9">
                                                     <label>Pregnancies:</label>
                                                 </div>
                                                 <div class="col-3">
@@ -391,7 +392,7 @@
                                         </div>
                                         <div class="col-4">
                                             <div class="row mb-2">
-                                                <div class="col-8">
+                                                <div class="col-9">
                                                     <label>live-births:</label>
                                                 </div>
                                                 <div class="col-3">
@@ -402,7 +403,7 @@
                                         </div>
                                         <div class="col-3">
                                             <div class="row mb-2">
-                                                <div class="col-8">
+                                                <div class="col-9">
                                                     <label>Miscarriages:</label>
                                                 </div>
                                                 <div class="col-3">
